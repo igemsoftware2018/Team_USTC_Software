@@ -1,0 +1,25 @@
+<!--
+<div class="content">
+  <div nz-row class="up-nav">
+    <div nz-col nzSpan="4" class="watch-all-info-word">
+      Archives
+    </div>
+    <div nz-col nzOffset="1" nzSpan="1" class="icon">
+      <i class="anticon anticon-right"></i>
+    </div>
+    <div nz-col nzSpan="4" class="label">
+      {{archive}}
+    </div>
+    <div nz-col nzOffset="15" nzSpan="3" class="sort">
+      <i class="anticon anticon-swap"><div class="rotate">&nbsp;sort</div></i>
+    </div>
+  </div>
+  <div nz-row class="watch-all-info">
+    <div *ngFor="let watch-all-info of user.reports">
+      <app-others-watch-all-info [watch-all-info]="watch-all-info" [bkcolor]="'#F2F2F2'"></app-others-watch-all-info>
+    </div>
+  </div>
+</div>
+-->
+<app-watch-report-by-classification [big_label]="'Archieve'" [label]="archive" [classification_reports]="archive_reports"
+[pending_show]="pending_show" [pending_wrong_show]="pending_wrong_show"></app-watch-report-by-classification>

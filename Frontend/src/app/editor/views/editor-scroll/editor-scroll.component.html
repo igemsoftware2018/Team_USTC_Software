@@ -1,0 +1,22 @@
+<div class="scroll_main">
+  <div class="scroll_part" (click)="sentEvent(0)">
+      <img class="scroll_icon" src="assets/img/editor/icons/I.png"/>
+  </div>
+  <div class="scroll_part">
+      <i class="anticon anticon-swap-right scroll_icon"></i>
+  </div>
+
+  <ng-container *ngFor="let ico of iconsList; let idx = index">
+      <div class="scroll_part" (click)="sentEvent(idxList[idx])">
+          <img class="scroll_icon" [src]="ico"/>
+      </div>
+      <div class="scroll_part">
+          <i class="anticon anticon-swap-right scroll_icon"></i>
+      </div>
+  </ng-container>
+
+  <div class="scroll_part" (click)="sentEvent(-1)">
+      <img class="scroll_icon" src="assets/img/editor/icons/R.png"/>
+  </div>
+
+</div>

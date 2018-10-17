@@ -1,0 +1,58 @@
+<div nz-row class="s-bk">
+  <!-- navbar -->
+
+  <div nz-col nzSpan="24">
+    <nz-tabset nz-row style="text-align: center;" >
+      <nz-tab nz-col nzSpan="5" [nzTitle]="CollectionTemplate">
+        <ng-template #CollectionTemplate>
+          <a>Collections</a>
+        </ng-template>
+
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
+
+        <div style="text-align: justify">
+          <nz-collapse [nzBordered]="false">
+            <nz-collapse-panel  *ngFor = "let collection of collections" [nzHeader]="collection.name"
+                               [nzActive]="true">
+              <app-others-report  *ngFor="let report of collection.reports" [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="5" [nzTitle]="FavoriteTemplate">
+        <ng-template #FavoriteTemplate>
+          <a>Favorite</a>
+        </ng-template>
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
+        <div *ngFor="let report of favorite">
+          <app-others-report [bkcolor]="'#F2F2F2'" [report]="report"></app-others-report>
+        </div>
+      </nz-tab>
+
+
+    </nz-tabset>
+  </div>
+</div>

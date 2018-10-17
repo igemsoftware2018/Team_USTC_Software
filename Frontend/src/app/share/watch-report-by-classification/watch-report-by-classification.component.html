@@ -1,0 +1,34 @@
+<div class="content" >
+  <div nz-row nzType="flex" nzAlign="middle">
+    <div nz-col nzSpan="20" class="report-word">
+      <div class="label_container">
+        <span>{{big_label}}</span>
+        <i class="icon anticon anticon-right"></i>
+        <span class="label">&nbsp;&nbsp;&nbsp;&nbsp;{{label?.name}}{{label?.date}}</span>
+      </div>
+    </div>
+    <div nz-col nzSpan="4" class="sort">
+      <i class="rotate anticon anticon-swap"></i><span>&nbsp;sort</span>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
+  <!-- for pending -->
+  <div *ngIf="pending_show&&!pending_wrong_show">
+    <div class="pending-position">
+      <app-pending></app-pending>
+    </div>
+  </div>
+  <div *ngIf="pending_wrong_show">
+    <div class="pending-position">
+      <app-wrong-pending></app-wrong-pending>
+    </div>
+  </div>
+  <!-- for pending  -->
+  <div *ngIf="!pending_show&&!pending_wrong_show">
+    <div nz-row class="report">
+      <div *ngFor="let report of classification_reports">
+        <app-my-report [report]="report" [bkcolor]="'#F2F2F2'"></app-my-report>
+      </div>
+    </div>
+  </div>
+</div>

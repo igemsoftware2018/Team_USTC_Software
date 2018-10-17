@@ -1,0 +1,31 @@
+<div>
+  <div nz-row align="center">
+    <div nz-col nzSpan="16" nzOffset="4">
+      <nz-avatar (click)="gotoIndex()" class="photo" nzIcon="anticon anticon-user" nzSrc="{{user?.avatar_url}}" ></nz-avatar>
+      <div class="name">{{user?.username}}</div>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row align="center" class="number-info">
+    <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+      <div class="number">{{user?.stat.report_count}}</div>
+      <div>reports</div>
+    </div>
+    <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+      <div class="number">{{user?.stat.following_count}}</div>
+      <div>following</div>
+    </div>
+    <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+      <div class="number">{{user?.stat.follower_count}}</div>
+      <div>followers</div>
+    </div>
+    <div nz-col nzSpan="6" (click)="gotoDetailInfo()">
+      <div class="number">{{user?.stat.star_count}}</div>
+      <div>praises</div>
+    </div>
+  </div>
+</div>
+
+
+
+

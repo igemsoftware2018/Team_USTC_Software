@@ -1,0 +1,28 @@
+<div class="body">
+  <div nz-row>
+    <app-user-info-profile [user]="userinfo" [ismyself]="false"></app-user-info-profile>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <!-- for pending -->
+    <div *ngIf="pending_show&&!pending_wrong_show">
+      <div class="pending-position">
+        <app-pending></app-pending>
+      </div>
+    </div>
+    <div *ngIf="pending_wrong_show">
+      <div class="pending-position">
+        <app-wrong-pending></app-wrong-pending>
+      </div>
+    </div>
+    <!-- for pending  -->
+    <div *ngIf="!pending_show&&!pending_wrong_show">
+    <app-classification [userid]="userinfo.id"
+                        [all_labels]="labels"
+                        [all_archive]="archive"
+                        [all_pop_report]="popular_reports">
+    </app-classification>
+    </div>
+  </div>
+</div>
+

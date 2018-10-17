@@ -1,0 +1,38 @@
+<div class="dinfo reports" nz-row [style.background-color]="bkcolor" >
+  <!-- avatar -->
+  <div  class="down" nz-col  nzSpan="4" align="center">
+    <div nz-row>
+      <div nz-col nzOffset="5" nzSpan="14">
+        <a (click)="gotoIndex()"><img class="avatar" src="{{report?.author?.avatar_url}}"></a>
+      </div>
+    </div>
+  </div>
+
+  <div nz-col nzSpan="20">
+    <div class="title" nz-col nzSpan="4">
+      <a (click)="gotoReport(report.id)" >{{report?.title}}</a>
+    </div>
+    <div class="content" nz-col nzSpan="24">
+      <pre>{{report?.abstract}}</pre>
+    </div>
+    <div class="topic-title" nz-col nzSpan="6">
+      <span class="topic-title">labels:</span>
+      <div class="topic-content-container">
+        <a class="topic-content" (click)="gotoLabel((report?.labels)[0]?.id)">&nbsp;&nbsp;{{(report?.labels)[0]?.name}}</a>
+      </div>
+      <div class="topic-content-container">
+        <a class="topic-content" (click)="gotoLabel((report?.labels)[1]?.id)"> {{(report?.labels)[1]?.name}} </a>
+      </div>
+      <div class="topic-content-container">
+        <a class="topic-content" (click)="gotoLabel(report?.labels[2].id)"> {{(report?.labels)[2]?.name}}</a>
+      </div>
+    </div>
+    <div nz-col nzOffset="10" nzSpan="3">
+      <span class="info-num">{{report?.likesnum}}&nbsp;likes</span>
+    </div>
+    <div nz-col nzSpan="3">
+      <span class="info-num">{{report?.commentsnum}}&nbsp;comments</span>
+    </div>
+  </div>
+
+</div>

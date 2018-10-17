@@ -1,0 +1,16 @@
+@-webkit-keyframes rotation {
+  0% { transform: rotate3d(0,1,0,0deg);}
+  50% {transform: rotate3d(0,1,0,180deg);}
+  100% { transform: rotate3d(0,1,0,360deg); }
+}
+.infinity-rotate{
+  width: 50px;
+  height: auto;
+  -webkit-animation: rotation 2s infinite linear;
+}
+.loading{
+  color:#70baf8;
+  font-family: Helvetica;
+  font-size: 17px;
+  margin-top: 3px;
+}

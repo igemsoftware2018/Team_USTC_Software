@@ -1,0 +1,45 @@
+<div class="sideButtons">
+    <div id="LuckyButton_0" (click)="clickButton()" [@change_c]="flag">
+        <img src="assets/img/editor/icons/bear.png" class="mainButton">
+    </div>
+
+    <!-- 第一组 -->
+    <div id="LuckyButton_1" [@change]="flag" (click)="append.reportShowTop()">
+        <img src="assets/img/editor/icons/top.png">
+    </div>
+
+    <div id="LuckyButton_2" [@change]="flag" (click)="showModal()">
+        <img src="assets/img/editor/icons/var.png">
+    </div>
+
+    <div id="LuckyButton_3" [@change]="flag" (click)="append.reportShowResult()">
+        <img src="assets/img/editor/icons/rslt.png">
+    </div>
+
+    <div id="LuckyButton_4" [@change]="flag" (click)="append.reportShowInfo()">
+        <img src="assets/img/editor/icons/info.png">
+    </div>
+
+    <!-- 第二组 -->
+    <div id="LuckyButton_1" [@change_r]="flag" (click)="append.reportAddList()">
+        <img src="assets/img/editor/icons/quote.png">
+    </div>
+
+    <div id="LuckyButton_2" [@change_r]="flag" (click)="append.reportAddTable()">
+        <img src="assets/img/editor/icons/table.png">
+    </div>
+
+    <div id="LuckyButton_3" [@change_r]="flag" (click)="append.reportAddPict()">
+        <img src="assets/img/editor/icons/img.png">
+    </div>
+
+    <div id="LuckyButton_4" [@change_r]="flag" (click)="append.reportAddText()">
+        <img src="assets/img/editor/icons/text.png">
+    </div>
+</div>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Enviroment Varibles" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <textarea [(ngModel)]="varibleField" nz-input placeholder="Input varibles like title = lalala author = andy" 
+            [nzAutosize]="{ minRows: 6, maxRows: 10 }"></textarea>
+</nz-modal>

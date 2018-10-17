@@ -1,0 +1,22 @@
+
+<div class="animate">
+  <div id="container"><div id="output"></div></div>
+</div>
+<div class="welcome" align="center" [style.opacity]="opacity">
+  <p style="padding:0px;margin: 0px" #welcome> WELCOME </p>
+  <p style="padding:0px;margin: 0px" #biohub> BIOHUB </p>
+</div>
+<div class="content" #content>
+  <nz-affix [nzOffsetTop]="45">
+    <ul  nz-menu [nzMode]="'horizontal'"  >
+      <li nz-menu-item routerLink="/explore/reports"> Reports</li>
+      <li nz-menu-item routerLink="/explore/users"> Users</li>
+      <!--<li nz-menu-item> Biobricks </li>-->
+    </ul>
+  </nz-affix>
+
+  <div class="popular-display" align="center">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

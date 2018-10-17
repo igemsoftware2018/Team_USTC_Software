@@ -1,0 +1,30 @@
+<div class="dinfo reports" nz-row [style.background-color]="bkcolor" >
+  <!-- avatar -->
+  <div class="title" nz-col nzSpan="24">
+    <a (click)="gotoIndex()">
+      <nz-avatar nzIcon="anticon anticon-user" nzSrc="{{report.author.avatar_url}}" ></nz-avatar>
+    </a>
+    <a class="report-name" (click) = "gotoReport(report.id)">{{report.title|uppercase}}</a>
+  </div>
+  <div class="content" nz-col nzSpan="24">
+    <pre>{{report.abstract}}</pre>
+  </div>
+  <div class="topic-title" nz-col nzSpan="16">
+    <span class="topic-title">labels:</span>
+    <div class="topic-content-container">
+      <a class="topic-content" (click)="gotoLabel((report.labels)[0]?.id)">&nbsp;&nbsp;{{(report.labels)[0]?.name}}</a>
+    </div>
+    <div class="topic-content-container">
+      <a class="topic-content" (click)="gotoLabel((report.labels)[1]?.id)"> {{(report.labels)[1]?.name}} </a>
+    </div>
+    <div class="topic-content-container">
+      <a class="topic-content" (click)="gotoLabel(report.labels[2].id)"> {{(report.labels)[2]?.name}}</a>
+    </div>
+  </div>
+  <div nz-col  nzSpan="3">
+    <span class="info-num">{{report.likesnum}}&nbsp;likes</span>
+  </div>
+  <div nz-col nzSpan="3">
+    <span class="info-num">{{report.commentsnum}}&nbsp;comments</span>
+  </div>
+</div>

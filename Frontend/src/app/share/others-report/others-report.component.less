@@ -1,0 +1,84 @@
+pre{
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.dinfo{
+  text-align: justify;
+  padding:5px 20px 10px 20px;
+  margin:5px 20px 30px 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.avatar {
+  border-radius: 50%;
+  width: 100%;
+  height:auto;
+}
+.down{
+  positon:relative;
+  top:12px;
+}
+.title{
+  margin-bottom: 20px;
+}
+.title a{
+  font-family: HelveticaNeue-Bold;
+  color:#333333;
+  font-size: 20px;
+  white-space:nowrap;
+  text-decoration: underline;
+  position:absolute;
+}
+.title a:hover{
+  color:#3C7BBB;
+}
+.content{
+  positon:relative;
+  height: 70px;
+  margin:10px 10px 10px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* 控制显示的行数 */
+  ::-webkit-scrollbar {
+    width:0px;
+  }
+}
+.content pre{
+  font-family: Helvetica;
+  color:#333333;
+  font-size: 13px;
+}
+.topic-title{
+  font-family: Helvetica;
+  color:#333333;
+  font-size: 13px;
+  display: inline;
+}
+.topic-content-container{
+  max-width: 30%;
+  position: relative;
+  top: 6px;
+  margin-right: 5px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.topic-content{
+  font-family: Helvetica;
+  color:#005cbf;
+  font-size:14px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.topic-content:hover{
+  color:#1890ff;
+}
+.info-num{
+  color:#9B9B9B;
+  font-family: HelveticaNeue;
+  font-size: 10px;
+}

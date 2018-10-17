@@ -1,0 +1,51 @@
+<div nz-row>
+  <!-- panda -->
+
+  <!-- input form -->
+  <div nz-col [nzXs]="{offset:2, span:20}" [nzSm]="{offset:5, span:14}" [nzMd]="{offset:7, span: 10}"
+       [nzLg]="{offset:8, span:8}" [nzXl]="{offset:9, span:6}"  [nzXXl]="{offset:10, span:4}" nzOffset="9" nzSpan="6">
+
+    <div nz-row>
+      <div class="panda" nz-col nzOffset="7" nzSpan="10">
+        <app-panda [shake]="shake"></app-panda>
+      </div>
+    </div>
+
+    <div nz-row class="reset-form">
+      <div nz-col nzOffset="4" nzSpan="16" align="center">
+        <p class="reset-title" >Reset your Password</p>
+      </div>
+
+      <form  nz-form nzLayout="vertical" [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+
+        <nz-form-item>
+          <nz-form-control nzOffset="1" nzSpan="22" nzHasFeedback>
+            <p class="enter-content">Enter your email address and we will send you a link
+              to reset your password.</p>
+            <nz-input-group nzPrefixIcon="anticon anticon-mail">
+              <input (focus)="startShake()" (blur)="stopShake()"
+                     type="text" nz-input formControlName="email" placeholder="E-mail">
+            </nz-input-group>
+            <nz-form-explain *ngIf="email.dirty && email.errors || email.pending ">
+              <ng-container *ngIf="email.hasError('required')">
+                Please enter email!
+              </ng-container>
+              <ng-container *ngIf="email.hasError('forbiddenEmail')">
+                Email is invalid!
+              </ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzOffset="4" nzSpan="16">
+            <button type="submit" nz-button nzValue="large" class="reset-form-button" [nzType]="'primary'" [disabled]="!validateForm.valid">
+              Send Password Reset E-mail
+            </button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+
+  </div>
+</div>

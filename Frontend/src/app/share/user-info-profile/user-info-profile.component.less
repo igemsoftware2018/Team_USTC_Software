@@ -1,0 +1,131 @@
+label{
+  font-family: "AvenirNext-Bold";
+  color:#4A4A4A;
+  font-size:4px;
+}
+.about{
+  height:200px;
+}
+:focus{
+  outline: 0;
+}
+.workinfo{
+  .number{
+    font-family: ArialMT;
+    font-size: 48px;
+    color:#333333;
+  }
+  span{
+    postion:relative;
+    float:right;
+    left:50px;
+    margin-right: 2px;
+  }
+}
+.number-info div:hover{
+  color:#1890ff;
+  cursor: pointer;
+}
+.photo:hover{
+  cursor: pointer;
+}
+//对于大屏
+@media screen and (min-width:770px){
+  .photo{
+    margin-top:30px;
+    width:120px;
+    height:120px;
+  }
+  //这个是名字的样式
+  .name{
+    color: #000000;
+    font-size:26px;
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  //这个是按钮的样式
+  .rectangle3{
+    backgoround:#3288FF;
+    font-family: AvenirNext-Regular;
+    text-align: center;
+    width:100px;
+    margin-top:15px;
+  }
+  .number-info{
+    margin-bottom: 15px;
+    font-family: HelveticaNeue;
+    font-size:8px;
+    .number{
+      font-family: ArialMT;
+      font-size: 24px;
+      color: #333333;
+    }
+  }
+}
+//对于ipad
+@media screen and (min-width:691px) and (max-width:769px){
+  .photo{
+    margin-top:30px;
+    width:160px;
+    height:160px;
+  }
+  //这个是名字的样式
+  .name{
+    color: #000000;
+    font-size:16px;
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  //这个是按钮的样式
+  .rectangle3{
+    border-radius:15px;
+    backgoround:#3288FF;
+    font-family: AvenirNext-Regular;
+    text-align: center;
+    width:100px;
+    margin-top:15px;
+  }
+  .number-info{
+    margin-bottom: 15px;
+    font-family: HelveticaNeue;
+    font-size:8px;
+    .number{
+      font-family: ArialMT;
+      font-size: 24px;
+      color: #333333;
+    }
+  }
+}
+//对于小屏
+@media screen and(max-width:690px) {
+  .photo {
+    margin-top: 15px;
+    width: 80px;
+    height: 80px;
+  }
+  .name{
+    color: #000000;
+    font-size:12px;
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+  .rectangle3{
+    border-radius:15px;
+    backgoround:#3288FF;
+    font-family: AvenirNext-Regular;
+    text-align: center;
+    margin-top:15px;
+    width:80px;
+    height: 30px;
+  }
+  .number-info{
+    margin-bottom: 10px;
+    font-family: HelveticaNeue;
+    font-size: 8px;
+    .number{
+      font-family: ArialMT;
+      font-size: 16px;
+      color: #333333;
+    }
+  }
+}

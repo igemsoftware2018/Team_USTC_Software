@@ -1,0 +1,31 @@
+
+<nz-collapse>
+  <nz-collapse-panel *ngFor="let ret of editor.report.result;let i = index" 
+                    [nzHeader]="header" >
+    <div [ngSwitch]="ret.subType">
+      <div *ngSwitchCase="'Text'" class="panelArea">
+          <app-text-panel [ret]="ret"></app-text-panel>
+      </div>
+      <div *ngSwitchCase="'Pictures'"  class="panelArea">
+          <app-pict-panel [ret]="ret"></app-pict-panel>
+      </div>
+      <div *ngSwitchCase="'List'"  class="panelArea">
+          <app-list-panel [ret]="ret"></app-list-panel>
+      </div>
+      <div *ngSwitchCase="'Table'"  class="panelArea">
+        <app-table-panel [ret]="ret"></app-table-panel>
+      </div>
+    </div>
+
+    <ng-template #header>
+      <div nz-row>
+        <div nz-col nzSpan="4">
+          <span>{{ret.subType}}</span>
+        </div>
+        <div nz-col nzSpan="3" nzOffset="17">
+          <span class="nextDeleteButton" (click)="delResult(i)">delete</span>
+        </div>
+      </div>
+    </ng-template>
+  </nz-collapse-panel>
+</nz-collapse>

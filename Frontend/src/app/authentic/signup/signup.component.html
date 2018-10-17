@@ -1,0 +1,107 @@
+<div style="height:100%" nzJustify="">
+
+    <div class="bio-intro" nz-col nzSpan="12">
+      <div nz-row class="bio-text">
+        <div nz-col nzOffset="4" nzSpan="20" align="right">
+          <pre class="bio-title">Built for iGEMers</pre>
+          <p class="bio-content">BioHub is a universal synthetic biology
+            experiment platform inspired by the
+            way you work. You can search the
+            content you need, record whatever you
+            want and communicate alongside many
+            other iGEMers.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div  class="form-container" align="center" >
+      <div nz-row class="form">
+        <div nz-col  nzSpan="24">
+          <div nz-row>
+            <div class="panda" nz-col nzOffset="7" nzSpan="10">
+              <app-panda [shake]="shake" ></app-panda>
+            </div>
+          </div>
+
+          <div nz-row class="sign-up-form" align="center">
+
+            <form nz-form nzLayout="vertical" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+              <nz-form-item >
+                <nz-form-control  nzOffset="1" nzSpan="22" nzHasFeedback>
+                  <nz-input-group nzPrefixIcon="anticon anticon-user">
+                    <input (focus)="startShake()" (blur)="stopShake()"
+                           type="text" nzSize="small" nz-input formControlName="username" placeholder="Username">
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="username.dirty && username.errors || username.pending ">
+                    <ng-container *ngIf="username.hasError('required')">
+                      Please enter your username!
+                    </ng-container>
+                    <ng-container *ngIf="username.hasError('minlength')">
+                      too short (minimum is 7 characters)!
+                    </ng-container>
+                    <ng-container *ngIf="username.hasError('maxlength')">
+                      too long (maximum is 20 characters)!
+                    </ng-container>
+                    <ng-container *ngIf="username.hasError('forbiddenName')">
+                      Username can only contains alphanumeric and numeric characters, spaces, underscores and hyphens!
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+
+              <nz-form-item>
+                <nz-form-control  nzOffset="1" nzSpan="22" nzHasFeedback>
+                  <nz-input-group nzPrefixIcon="anticon anticon-mail">
+                    <input (focus)="startShake()" (blur)="stopShake()"
+                           type="text" nzSize="small" nz-input formControlName="email" placeholder="E-mail">
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="email.dirty && email.errors || email.pending ">
+                    <ng-container *ngIf="email.hasError('required')">
+                      Please enter your e-mail!
+                    </ng-container>
+                    <ng-container *ngIf="email.hasError('forbiddenEmail')">
+                      E-mail is invaild!
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+
+              <nz-form-item>
+                <nz-form-control nzOffset="1" nzSpan="22" nzHasFeedback>
+                  <nz-input-group nzPrefixIcon="anticon anticon-lock">
+                    <input (focus)="startShake()" (blur)="stopShake()"
+                           type="password" nzSize="small" nz-input formControlName="password" placeholder="Password">
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="password.dirty && password.errors || password.pending ">
+                    <ng-container *ngIf="password.hasError('required')">
+                      Please enter password!
+                    </ng-container>
+                    <ng-container *ngIf="password.hasError('forbiddenAlpha')">
+                      Password must contain at least one alphanumeric characters!
+                    </ng-container>
+                    <ng-container *ngIf="password.hasError('forbiddenNumeric')">
+                      Password must contain at least one numeric characters!
+                    </ng-container>
+                    <ng-container *ngIf="password.hasError('minlength')">
+                      too short (minimum is 8 characters)!
+                    </ng-container>
+                    <ng-container *ngIf="password.hasError('maxlength')">
+                      too long (maximum is 30 characters)!
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control nzOffset="1" nzSpan="22">
+                  <button type="submit" nz-button class="signup-form-button" [nzType]="'primary'"
+                          [disabled]="!validateForm.valid">Sign up for Biohub</button>
+                  <p class="signup-alert">By clicking “Sign up for BioHub”, you agree to our terms of service and privacy statement. We’ll occasionally send you account related emails.</p>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

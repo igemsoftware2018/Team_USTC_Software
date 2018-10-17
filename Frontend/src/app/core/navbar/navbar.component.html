@@ -1,0 +1,67 @@
+<style>
+  li .ant-menu .ant-menu-dark ant-menu-item-selected{
+    background-color: transparent;
+  }
+</style>
+
+<div class="bio-nav">
+  <ul class="nav-container">
+    <div class="nav-left">
+      <li class="nav-item" [routerLink]="['/index']" routerLinkActive="selected">
+        <img src="assets/img/panda/logo.png" class="brand">
+      </li>
+    </div>
+
+    <div class="nav-center">
+      <li class="nav-item" [routerLink]="['/explore']" routerLinkActive="selected">Explore</li>
+      <li class="nav-item"[routerLink]="['/editor']" routerLinkActive="selected">Editor</li>
+      <li class="nav-item" [routerLink]="['/search']" routerLinkActive="selected">Search</li>
+    </div>
+
+    <div class="nav-right">
+      <li class="nav-item down" *ngIf="ifLogin" nz-popover nzPlacement="bottom" nzTitle="Notification"
+          [nzContent]="notification_content" [routerLink]="['/notification']" routerLinkActive="selected">
+        <nz-badge [nzDot]="new_notification">
+              <nz-avatar nzSize="small" nzIcon="anticon anticon-notification" [nzShape]="'square'"></nz-avatar>
+        </nz-badge>
+      </li>
+      <li class="nav-item" *ngIf="ifLogin" [routerLink]="['/feeds']" routerLinkActive="selected">
+         <nz-badge [nzDot]="new_feeds" >
+              <nz-avatar nzSize="small" nzIcon="anticon anticon-mail" [nzShape]="'square'"></nz-avatar>
+        </nz-badge>
+      </li>
+      <li class="nav-item" *ngIf="ifLogin" >
+        <nz-avatar nz-popover nzPlacement="bottom" nzPlacement="bottomRight" [nzContent]="userContentTemplate"
+                   [nzTitle]="userTitleTemplate" nzIcon="anticon anticon-user" [nzSrc]="user.avatar_url"></nz-avatar>
+      </li>
+      <li class="nav-item" *ngIf="!ifLogin" [routerLink]="['/authentication/signin']" routerLinkActive="selected">Sign In</li>
+      <li class="nav-item" *ngIf="!ifLogin" [routerLink]="['/authentication/signup']" routerLinkActive="selected">Register</li>
+    </div>
+  </ul>
+
+    <ng-template #userTitleTemplate>
+      <div nz-row class="title">
+        <div nz-col nzSpan="24">
+          <span class="name">{{user.username}}</span><br/>
+          <span class="abstract">{{user.description}}</span>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #userContentTemplate>
+      <div class="button">
+        <div><a class="profile-content" routerLink="/mypersonalcenter">Profile</a></div>
+        <div><a class="profile-content" routerLink="/mypersonalcenter/userset">Setting</a></div>
+      </div>
+        <div class="underline"></div>
+      <div class="logout">
+        <a (click)="logout()">
+          <i class="anti-logout anticon anticon-poweroff"></i>log out
+        </a>
+      </div>
+    </ng-template>
+    <ng-template #notification_content class="down">
+      <div class="notification-container">
+        <p class="notification"> {{notification_msg}} </p>
+      </div>
+    </ng-template>
+</div>

@@ -1,0 +1,42 @@
+<nz-table #basicTable nzBordered 
+        [nzData]="ret.table" 
+        nzSize="middle" 
+        [nzPageSize]="20" 
+        [nzFooter]="TableFooter"
+        [nzHideOnSinglePage]="true">
+  <thead>
+    <tr>
+        <th *ngFor="let field of basicTable.data[0];let ii = index">
+          <div (click)="changeFieldState(ii)" *ngIf="fieldEditable !== ii">{{field}}</div>
+          <input  nz-input *ngIf="fieldEditable === ii" [(ngModel)]="fieldTemp" style="width:80%"/>
+          <span (click)="changeField()" *ngIf="fieldEditable === ii">  Save</span>
+        </th>
+        <th nzWidth="100px" nzRight="0px">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data;let ii = index">
+      <ng-container *ngIf="ii >= 1">
+        <td *ngFor="let ceil of data;let jj = index">
+          <div *ngIf="ii !== rowEditable">{{ceil}}</div>
+          <input  nz-input *ngIf="rowEditable === ii" [(ngModel)]="rowTemp[jj]"/>
+        </td>
+        <td nzRight="0px">
+          <ng-container *ngIf="rowEditable !== ii">
+            <a (click)="changeRowState(ii)">edit</a>
+          </ng-container>
+          <ng-container  *ngIf="rowEditable === ii">
+            <a (click)="changeRow(ii)">save</a>
+          </ng-container>
+          <ng-container>
+            <a (click)="deleteRow(ii)" style="color:#F04536">  delete</a>
+          </ng-container>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+  <ng-template #TableFooter>
+      <button nz-button class="editable-add-btn" (click)="addRow()">Add Row</button>
+      <button nz-button class="editable-add-btn" (click)="addCol('Default')">Add Column</button>
+  </ng-template>
+</nz-table>

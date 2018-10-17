@@ -1,0 +1,61 @@
+<div class="d-bk" nz-row >
+  <div nz-col nzXS="24" [nzSm]="{span:24}" [nzMd]="{span:20,offset:2}" [nzLg]="{span:18, offset:3}"
+       [nzXl]="{span:16, offset:4}" [nzXXl]="{span:14, offset:5}">
+    <div nz-row nzGutter="10">
+      <div nz-col nzSpan="24">
+        <div *ngFor="let feed of feeds" class="feed-content">
+
+          <div nz-row *ngIf="feed.category === 'FollowingReport'">
+            <div nz-col nzSpan="1" class="title-avatar">
+              <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                         nzSrc="{{feed.actor.avatar_url}}"></nz-avatar>
+            </div>
+            <div nz-col nzSpan="23" >
+              <div class="title-content">
+                <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{feed.actor.username}}</span>
+                <span class="title-light">&nbsp;&nbsp;writed&nbsp;&nbsp;a&nbsp;&nbsp;report&nbsp;</span>
+                <span class="title-light">&nbsp;{{feed.target.title}}</span>
+              </div>
+              <app-others-report [bkcolor]="'#FFFFFF'" [report]="feed.target"></app-others-report>
+            </div>
+          </div>
+
+          <!-- <div nz-row *ngIf="feed.kind === 'like'">
+            <div nz-col nzSpan="1" class="title-avatar">
+              <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                         nzSrc="{{feed.friend.avatar_url}}"></nz-avatar>
+            </div>
+            <div nz-col nzSpan="23">
+              <div class="title-content">
+                <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{feed.friend.name}}</span>
+                <span class="title-light">&nbsp;&nbsp;liked&nbsp;</span>
+                <span class="title-bold">&nbsp;{{feed.report.title}}&nbsp;</span>
+                <span class="title-light">&nbsp;by&nbsp;</span>
+                <span class="title-bold">&nbsp;{{ feed.report.author.name }}&nbsp;&nbsp;</span>
+                <span class="title-time">{{feed.date}}</span>
+              </div>
+              <app-others-report [bkcolor]="'#FFFFFF'" [report]="feed.report"></app-others-report>
+            </div>
+          </div>
+
+          <div nz-row *ngIf="feed.kind === 'upload'">
+            <div nz-col nzSpan="1" class="title-avatar">
+              <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                         nzSrc="{{feed.report.author.avatar_url}}"></nz-avatar>
+            </div>
+            <div nz-col nzSpan="23">
+              <div class="title-content">
+                <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{feed.report.author.name}}</span>
+                <span class="title-light">&nbsp;&nbsp;uploaded&nbsp;followed&nbsp;</span>
+                <span class="title-bold">&nbsp;{{feed.report.title}}&nbsp;&nbsp;</span>
+                <span class="title-time">{{feed.date}}</span>
+              </div>
+              <app-others-report [bkcolor]="'#FFFFFF'" [report]="feed.report"></app-others-report>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

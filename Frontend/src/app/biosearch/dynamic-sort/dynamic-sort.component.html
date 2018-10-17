@@ -1,0 +1,15 @@
+<nz-collapse [nzBordered]="false" style="text-align: justify">
+  <nz-collapse-panel [nzHeader]="titles[0]|uppercase" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]= "ResultsTempates[0]"></ng-container>
+  </nz-collapse-panel >
+  <nz-collapse-panel [nzHeader]="titles[1]|uppercase" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]="ResultsTempates[1]"></ng-container>
+  </nz-collapse-panel >
+  <nz-collapse-panel [nzHeader]="titles[2]|uppercase" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]="ResultsTempates[2]"></ng-container>
+  </nz-collapse-panel >
+  <nz-collapse-panel [nzHeader]="titles[3]|uppercase" [nzActive]="true" [ngStyle]="panelStyle">
+    <ng-container [ngTemplateOutlet]="ResultsTempates[3]"></ng-container>
+  </nz-collapse-panel >
+</nz-collapse>
+

@@ -1,0 +1,113 @@
+
+// 横屏且长度大于800显示蓝色背景
+@media screen and (min-height:650px) and (min-width:950px){
+  .bio-intro{
+    display: inline;
+    width: 50%;
+    float: left;
+  }
+  .form-container{
+    display:inline;
+    width:50%;
+    float:right;
+  }
+}
+@media screen and (min-height:650px) and (max-height: 800px){
+  .form{
+    padding-top: 50px;
+  }
+  .bio-text{
+    padding-bottom: 100px;
+  }
+}
+@media screen and (min-height:800px){
+  .form{
+    padding-top: 70px;
+  }
+  .bio-text{
+    padding-bottom: 150px;
+  }
+}
+@media screen and (max-height:650px){
+  .bio-intro{
+    display: none;
+  }
+  .form-container{
+    width:100%;
+  }
+  .bio-text{
+    padding-bottom: 70px;
+  }
+}
+@media screen and (max-width:950px){
+  .bio-intro{
+    display: none;
+  }
+}
+@media screen and (orientation: portrait){
+  .blue{
+    display: none;
+  }
+}
+
+.bio-intro {
+  height:100%;
+  background-image: url("../../../assets/img/background/signup.svg");
+}
+.bio-text{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding-right:40px;
+}
+.bio-title{
+  font-family: TimesNewRomanPS-BoldMT;
+  font-size: 45px;
+  color: #FFFFFF;
+  text-align: right;
+}
+.bio-content{
+  font-family: TimesNewRomanPSMT;
+  font-size: 23px;
+  color: #FFFFFF;
+  text-align: justify;
+}
+
+.form{
+  width:340px;
+}
+.sign-up-form {
+  position: relative;
+  top: 100px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  text-align: justify;
+  padding-top: 20px;
+}
+
+
+*{
+  font-family: Helvetica;
+  font-size:12px;
+}
+
+
+.signup-form-button {
+  width: 100%;
+  margin:10px 0px 10px 0px;
+  background-color: #61A9EF ;
+  color: #FFFFFF;
+}
+.form-bottom{
+  position:relative;
+  top:15px
+}
+.panda{
+  position: relative;
+  top: 100px;
+}
+.signup-alert{
+  font-family: Helvetica;
+  font-size: 12px;
+  color: #9B9B9B;
+}

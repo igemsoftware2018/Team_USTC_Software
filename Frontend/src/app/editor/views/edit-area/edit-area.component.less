@@ -1,0 +1,108 @@
+@colour_write: #FFFFFF;
+@screen-lg-min: 1000px; // 屏幕宽度
+@left-margin: 15px; // 与左边的间距
+
+@up-margin-lg: 15px;
+@up-margin-md: 15px;
+
+
+
+@media (min-width: @screen-lg-min) {
+    .editAreaMenu {
+        margin-left: @left-margin;
+        //margin-top: @up-margin-lg;
+        background-color: @colour_write;
+        width: 100%;
+        height: 50px;
+    }
+}
+
+@media (max-width: @screen-lg-min) {
+    .editAreaMenu {
+        margin-left: @left-margin;
+        //margin-top: @up-margin-md;
+        background-color: @colour_write;
+        width: 100%;
+        height: 50px;
+    }
+}
+
+// 核心编辑区
+.coreArea {
+    width: 100%;
+    margin-left: @left-margin;
+    overflow-y: scroll;
+}
+
+.coreAreaLoading {
+    .coreArea();
+    text-align: center;
+    padding-top :200px; 
+}
+
+.coreAreaPreview {
+    .coreArea();
+}
+
+::-webkit-scrollbar  {
+    width: 0px;
+}
+
+// 按钮群
+
+#editAreaMenuButton_1 {
+    background: #ECA21F;
+    .buttonMixin();
+}
+
+#editAreaMenuButton_2 {
+    background: #87B768;
+    .buttonMixin();
+}
+
+#editAreaMenuButton_3 {
+    background: #62C6BB;
+    .buttonMixin();
+}
+
+#editAreaMenuButton_3_n {
+    background: rgb(112, 112, 112);
+    .buttonMixin();
+}
+
+#editAreaMenuButton_4 {
+    background: #F04536;
+    .buttonMixin();
+}
+
+.buttonMixin {
+    height: 20px;
+    font-family: Arial-BoldMT;
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    @media (min-width: @screen-lg-min) {
+        margin-right: 1px;
+        margin-left: 1px;
+        font-size: 15px;
+        span {
+            top: 50%;
+        }
+    }   
+    @media (max-width: @screen-lg-min) {
+        margin-right: 1px;
+        margin-left: 1px;
+        font-size: 12px;
+        span {
+            margin-top:40px;
+        }
+    }
+}
+
+// 垂直居中
+
+.VertAlign {
+    top:50%;
+    transform: translate(0, -50%);
+}

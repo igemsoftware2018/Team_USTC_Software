@@ -1,0 +1,83 @@
+<div class="editAreaMenu" nz-row>
+  <!-- 进度条 -->
+  <div nz-col nzSm="12" nzMd="16" nzLg="16" nzXl="16" class="VertAlign">
+      <app-editor-scroll *ngIf="state === 1"></app-editor-scroll>
+  </div>
+
+  <!-- Save 按钮 -->
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
+    <div id="editAreaMenuButton_1" (click)="editorReportService.saveReport()"><span>Save</span></div>
+  </div>
+
+  <!-- Preview 按钮 -->
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state !== 3">
+      <div id="editAreaMenuButton_2" (click)="changeIsPreview()"><span>Preview</span></div>
+  </div>
+
+    <!-- Editor 按钮 -->
+    <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state === 3">
+        <div id="editAreaMenuButton_2" (click)="changeIsPreview()"><span>Edit</span></div>
+    </div>
+
+  <!-- Export 按钮 -->
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state === 3">
+      <div id="editAreaMenuButton_3"  (click)="downloadPdf()"><span>Export</span></div>
+  </div>
+
+    <!-- Export 按钮 -->
+    <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign" *ngIf="state !== 3">
+        <div id="editAreaMenuButton_3_n" ><span>Export</span></div>
+    </div>
+
+  <!-- Submit 按钮 -->
+  <div nz-col nzSm="3" nzMd="2" nzLg="2" nzXl="2" class="VertAlign">
+      <div id="editAreaMenuButton_4" (click)="editorReportService.saveReport()"><span>Submit</span></div>
+  </div>
+
+</div>
+
+<div class="coreAreaLoading" 
+    (window:resize)="onResize()"
+    [ngStyle]="{'height': editorHeight}"
+    *ngIf="state === 0">
+    <nz-spin nzTip='Loading...' [nzSize]="'large'">
+    </nz-spin>
+</div>
+
+<div class="coreAreaLoading" 
+    (window:resize)="onResize()"
+    [ngStyle]="{'height': editorHeight}"
+    *ngIf="state === 2">
+    <nz-spin nzTip='uh... Something bad happened' [nzSize]="'large'" [nzIndicator]="Error">
+    </nz-spin>
+    <ng-template #Error>
+        <img src="assets/img/icon/icon2.png" style="width: 48px;height: 48px;margin-bottom:10px"/>
+    </ng-template>
+</div>
+
+<div class="coreArea" 
+    (window:resize)="onResize()" 
+    [ngStyle]="{'height': editorHeight}" 
+    #scrolss
+    *ngIf="state === 1">
+    <!-- 各个文章 subroutines -->
+    <div>
+        <app-subroutine [type]="'Info'"></app-subroutine>
+    </div>
+
+    <div class="list-group list-group-flush" [sortablejs]="currentReport.subroutines" 
+        [sortablejsOptions]="options" #subDom>
+        <div  class="list-group-item subs_flag" *ngFor="let sub of currentReport.subroutines">
+            <app-subroutine [sub]="sub" [type]="sub.subType"></app-subroutine>
+        </div>
+    </div>
+
+    <div>
+        <app-subroutine [type]="'Result'"></app-subroutine>
+    </div>
+
+</div>
+
+<div class="coreAreaPreview" *ngIf="state === 3">
+    <app-report-render [reportId]="getId()" #preview></app-report-render>
+</div>

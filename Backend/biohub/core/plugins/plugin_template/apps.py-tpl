@@ -1,0 +1,10 @@
+from biohub.core.plugins import PluginConfig
+
+
+class {{ camel_case_plugin_label }}Config(PluginConfig):
+
+    name = '{{ plugin_name }}'
+    title = ''
+    author = ''
+    description = ''
+    js_url = ''  # the URL of `plugin.js`, you may leave it to blank

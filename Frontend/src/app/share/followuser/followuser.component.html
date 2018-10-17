@@ -1,0 +1,45 @@
+
+<div class="dinfo" nz-row [style.background-color]="bkcolor">
+  <!-- avatar -->
+  <div  class="down" nz-col  nzSpan="4" align="center">
+    <div nz-row>
+      <div nz-col nzOffset="5" nzSpan="14">
+        <a (click)="gotoIndex()"><img class="avatar" src="{{otheruser.avatar_url}}"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- information -->
+  <div nz-col nzSpan="20">
+      <div nz-row>
+        <div nz-col nzSpan="16">
+          <div nz-row>
+            <div class="oname" nz-col nzSpan="24">
+              <a (click)="gotoIndex()">{{otheruser.username}}</a>
+            </div>
+            <div nz-col  class="about-me" nzSpan="24">
+              <pre>{{otheruser.description}}</pre>
+            </div>
+            <div class="oinfo" nz-col nzSpan="6">
+              <p>{{otheruser.stat.following_count}}&nbsp;following</p>
+            </div>
+            <div class="oinfo" nz-col nzSpan="6">
+              <p>{{otheruser.stat.follower_count}}&nbsp;followers</p>
+            </div>
+            <div class="oinfo" nz-col nzSpan="6">
+              <p>{{otheruser.stat.star_count}}&nbsp;likes</p>
+            </div>
+            <div class="oinfo" nz-col nzSpan="6">
+              <p>{{otheruser.stat.report_count}}&nbsp;reports</p>
+            </div>
+          </div>
+        </div>
+
+        <div nz-col class="obtn"  nzSpan="8" align="center">
+          <button *ngIf="btnshow" nz-button [nzType]="isFollow?'default':'primary'"  (click)="toggleFollow()">{{btncontent}}</button>
+        </div>
+      </div>
+
+  </div>
+</div>
+

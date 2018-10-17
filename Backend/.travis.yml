@@ -1,0 +1,15 @@
+language: python
+sudo: required
+python:
+  - "3.6"
+services:
+  - mysql
+  - redis-server
+notifications:
+  email: false
+cache:
+  pip: true
+  directories:
+    - _download
+install: "bash .travis-install"
+script: "biohub/manage.py codestyle && biohub/manage.py test"

@@ -1,0 +1,99 @@
+
+@screen-lg-min: 1000px; // 屏幕宽度
+@size-lg: 55px;
+@size-md: 50px;
+
+#sideButtons {
+    align-content: center;
+}
+
+// #LuckyButton_0 {
+//     position: fixed;
+//     top:80%;
+//     .get_right();
+//     background: #FFFFFF;
+//     border-radius: 100px;
+// }
+
+#LuckyButton_0 {
+    position: fixed;
+    top:80%;
+    .LuckButton();
+    .getSize();
+}
+
+.mainButton {
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 8px;
+    width: 55px;
+    height: 55px;
+}
+
+#LuckyButton_1 {
+    position: fixed;
+    top:71%;
+    .LuckButton();
+    .getSize();
+}
+
+#LuckyButton_2 {
+    position: fixed;
+    .getSize();
+    top:62%;
+    .LuckButton();
+}
+
+#LuckyButton_3 {
+    position: fixed;
+    .getSize();
+    top:53%;
+    .LuckButton();
+}
+
+#LuckyButton_4 {
+    position: fixed;
+    .getSize();
+    top:44%;
+    .LuckButton();
+}
+
+
+.LuckButton {
+    cursor: pointer;
+    background: #FFFFFF;
+    border-radius: 100px;
+    .get_right();
+    img {
+        position: relative;
+        margin: 0 0 0 0;
+        .getSize();
+    }
+}
+
+.get_right {
+    //@media screen and (max-width: 4800px) {
+        right: 3%;
+    //}
+
+
+    // @media screen and (max-width: 1200px) {
+    //     right: 2%;
+    // }
+
+    // @media screen and (max-width: 950px) {
+    //     right: 3%;
+    // }
+}
+
+.getSize {
+    @media (min-width: @screen-lg-min) {
+        width: @size-lg;
+        height: @size-lg;
+    }
+
+    @media (max-width: @screen-lg-min) {
+        width: @size-md;
+        height: @size-md;
+    }
+}

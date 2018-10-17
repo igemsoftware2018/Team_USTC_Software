@@ -1,0 +1,118 @@
+<div>
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/editor-style.css"> -->
+  <div class="render_body" *ngIf="renderService.state === 1" id="content">
+    <div class="render_header"></div>
+    <h1 class="render_title">{{ renderService.report?.title }}</h1>
+      <!-- Sub Title -->
+      <table style="width:100%">
+        <tr>
+            <td width="50%" class="render_attr">Recorder: {{renderService.report?.author}}</td>
+            <td width="50%" class="render_attr">Date: {{ renderService.report?.ndate | date:'longDate' }}</td>
+        </tr>
+      </table>
+        <!-- <div nz-col [nzXXl]="6" [nzXs]="6" ></div> -->
+    
+      <!-- Introduction -->
+      <div class="render_sub_key">Introduction:</div>
+      <p class="render_sub_value"> {{ renderService.report?.introduction }} </p>
+      <p class="render_sub_key">Materials and Equipment:</p>
+      <p class="render_sub_value"> {{ renderService.extraContent['material'] }} </p>
+      <p class="render_sub_key">Result:</p>
+
+      <!-- Result -->
+      <div *ngFor="let result of renderService.report?.result">
+        <div [ngSwitch]="result.subType">
+          <div *ngSwitchCase="'Pictures'">
+            <img *ngFor="let picture of result.pic" [src]="picture.url"
+                  class="render_result_pic" crossOrigin="anonymous">
+          </div>
+          <div *ngSwitchCase="'Text'">
+            <p class="render_result_text"> {{ result.desc }}</p>
+          </div>
+          <div *ngSwitchCase="'List'">
+            <ol class="render_result_list">
+              <li *ngFor="let li of result.list" class="render_result_list_item">
+                <p class="render_result_list_text">{{li.str}}</p>
+              </li>
+            </ol>
+          </div>
+          <div *ngSwitchCase="'Table'">
+            <table class="render_result_table">
+              <tr *ngFor="let row of result.table;let ii = index" class="render_result_table_row">
+                <ng-container *ngIf="ii === 0">
+                  <th *ngFor="let col of row" class="render_result_table_th">{{col}}</th>
+                </ng-container>
+                <ng-container *ngIf="ii !== 0">
+                  <td *ngFor="let col of row" class="render_result_table_tr">{{col}}</td>
+                </ng-container>
+              </tr>
+            </table>
+          </div>
+        </div>     
+      </div>
+
+      <!-- Subroutine -->
+      <table class="render_step_table">
+        <tr class="render_step_row">
+          <th class="render_step_th_p" width="70%">Experiment Procedure</th>
+          <th class="render_step_th_r" width="30%">Notes</th>
+        </tr>
+        <tr *ngFor="let row of renderService.extraContent['s'];let ii = index"
+            class="render_step_row">
+          <ng-container [ngSwitch]="row['s']">
+            <ng-container *ngSwitchCase="'Picture'" class="render_step_td_p" width="70%">
+              <td class="render_step_td_p" width="70%">
+                  <img *ngFor="let picture of row['a']" [src]="picture.url"
+                  class="render_result_pic" crossOrigin="anonymous">
+              </td>
+              <td class="render_step_td_r" width="30%"></td>
+            </ng-container>
+            <ng-container *ngSwitchCase="'List'" class="render_step_td_p" width="70%">
+              <td class="render_step_td_p" width="70%">
+                <ol class="render_result_list">
+                  <li *ngFor="let li of row['a']" class="render_result_list_item">
+                    <p class="render_result_list_text">{{li.str}}</p>
+                  </li>
+                </ol>
+              </td>
+              <td class="render_step_td_r" width="30%"></td>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Table'" class="render_step_td_p" width="70%">
+              <td class="render_step_td_p" width="70%">
+                <table class="render_result_table">
+                  <tr *ngFor="let row of row['a'];let ii = index" class="render_result_table_row">
+                    <ng-container *ngIf="ii === 0">
+                      <th *ngFor="let col of row" class="render_result_table_th">{{col}}</th>
+                    </ng-container>
+                    <ng-container *ngIf="ii !== 0">
+                      <td *ngFor="let col of row" class="render_result_table_tr">{{col}}</td>
+                    </ng-container>
+                  </tr>
+                </table>
+              </td>
+              <td class="render_step_td_r" width="30%"></td>
+            </ng-container>
+            <ng-container *ngSwitchDefault class="render_step_td_p" width="70%">
+              <td class="render_step_td_p" width="70%">{{ii+1}}.{{row.s}}</td>
+              <td class="render_step_td_r" width="30%">{{row.n}}</td>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </table>
+                  
+      <div class="render_footer"></div>
+  </div>
+
+  <div *ngIf="renderService.state === 0" class="render_loading">
+      <nz-spin nzTip='Loading...' [nzSize]="'large'"></nz-spin>
+  </div>
+
+  <div *ngIf="renderService.state === 2 || renderService.state === 3" class="render_loading">
+    <nz-spin nzTip='uh... Something bad happened' [nzSize]="'large'" [nzIndicator]="Error">
+    </nz-spin>
+    <ng-template #Error>
+        <img src="assets/img/icon/icon2.png" style="width: 48px;height: 48px;margin-bottom:10px"/>
+    </ng-template>
+  </div>
+
+</div>

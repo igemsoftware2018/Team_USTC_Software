@@ -1,0 +1,59 @@
+<div nz-row class="notificationbox">
+<!--<div nz-col nzSpan="6" class="myuserinfo0">
+  <div nz-col nzSpan="22">
+  <app-siminfo [user]="user"></app-siminfo>
+  </div>
+</div>-->
+  <div nz-col nzSpan="20" class="messages">
+    <div *ngFor="let notification of notifications" class="notification-content">
+
+      <div nz-row *ngIf="notification.category === 'Follow'">
+        <div nz-col nzSpan="1" class="title-avatar">
+          <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                     nzSrc="{{notification.actor.avatar_url}}"></nz-avatar>
+        </div>
+        <div nz-col nzSpan="23" >
+          <div class="title-content">
+            <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{notification.actor.username}}</span>
+            <span class="title-light">&nbsp;&nbsp;started&nbsp;following&nbsp;you&nbsp;&nbsp; </span>
+            <span class="title-time">{{notification.created| date: 'longDate'}}</span>
+          </div>
+          <app-followuser [bkcolor]="'#FFFFFF'" [otheruser]="notification.actor"></app-followuser>
+        </div>
+      </div>
+
+      <div nz-row *ngIf="notification.category === 'Star'">
+        <div nz-col nzSpan="1" class="title-avatar">
+          <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                     nzSrc="{{notification.actor.avatar_url}}"></nz-avatar>
+        </div>
+        <div nz-col nzSpan="23">
+          <div class="title-content">
+            <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{notification.actor.username}}</span>
+            <span class="title-light">&nbsp;&nbsp;liked&nbsp;&nbsp;you&nbsp;</span>
+            <span class="title-bold">&nbsp;{{notification.target.title}}&nbsp;</span>
+            <span class="title-time">{{notification.created | date: 'longDate'}}</span>
+          </div>
+          <app-my-report [bkcolor]="'#FFFFFF'" [report]="notification.target"></app-my-report>
+        </div>
+      </div>
+
+      <div nz-row *ngIf="notification.category === 'Comment' ">
+        <div nz-col nzSpan="1" class="title-avatar">
+          <nz-avatar nzIcon="anticon anticon-user" nzSize="large"
+                     nzSrc="{{notification.actor.avatar_url}}"></nz-avatar>
+        </div>
+        <div nz-col nzSpan="23">
+          <div class="title-content">
+            <span class="title-bold">&nbsp;&nbsp;&nbsp;&nbsp;{{notification.actor.username}}</span>
+            <span class="title-light">&nbsp;&nbsp;commented&nbsp;&nbsp;on&nbsp;&nbsp;your&nbsp;</span>
+            <span class="title-bold">&nbsp;{{notification.target.title}}&nbsp;</span>
+            <span class="title-time">{{notification.created | date: 'longDate'}}</span>
+          </div>
+          <app-my-report [bkcolor]="'#FFFFFF'" [report]="notification.target"></app-my-report>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

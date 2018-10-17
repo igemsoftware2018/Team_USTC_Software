@@ -1,0 +1,20 @@
+<form nz-form>
+  <nz-form-item *ngFor="let li of ret.list; let i = index">
+    <nz-form-label nzSpan="2">{{i+1}}</nz-form-label>
+    <nz-form-control nzSpan="14">
+      <input nz-input placeholder="placeholder" [(ngModel)]="ret.list[i].str"
+        style="width: 80%; margin-right:8px;"
+        [ngModelOptions]="{standalone: true}">
+      <i class="anticon anticon-minus-circle-o dynamic-delete-button" (click)="delList(i)"></i>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item >
+      <nz-form-label nzSpan="2">New</nz-form-label>
+      <nz-form-control nzSpan="14">
+          <button nz-button nzType="dashed" (click)="pushList()" style="width: 80%; margin-right:8px;">
+            <i class="anticon anticon-plus"></i> Add new item.
+          </button>
+      </nz-form-control>
+  </nz-form-item>
+</form>

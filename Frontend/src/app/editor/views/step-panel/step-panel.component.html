@@ -1,0 +1,38 @@
+<div class="panelEditor">
+  <div class="panelHead" nz-row (window:resize)="getWindowsWidth()" >
+    <!-- panel 的 头部 -->
+    <div nz-col [nzXl]="1" [nzLg]="1" [nzMd]="2" [nzSm]="2" 
+        class="VertAlign" (click)="panelReverse()">
+        <span>&nbsp;&nbsp;</span>
+        <i  [ngClass]="{'anticon-down':panelState=='inactive',
+                        'anticon-up': panelState=='active',
+                        'anticon': true}" 
+                    style="vertical-align: middle;align-self: centent"></i>
+    </div>
+    <div nz-col nzSpan="5" class="VertAlign panelTitle" (click)="panelReverse()">
+        {{step.name}}
+    </div>
+  </div>
+  <div class="panelContent" [@panel]="panelState">
+      <!-- panel 的主体部分 -->
+      <div nz-row>
+          <ng-container *ngFor="let fld of step.fields">
+            <ng-container [ngSwitch]="fld.attr[0]">
+              <div *ngSwitchCase="'@big'" nz-col nzSpan="24" class="field_class">
+                <app-editor-field-type [fld]="fld" [size]="'@big'"></app-editor-field-type>
+              </div>
+              <div *ngSwitchCase="'@mid'" nz-col nzSpan="24" class="field_class">
+                <app-editor-field-type [fld]="fld" [size]="'@mid'"></app-editor-field-type>
+              </div>
+              <div *ngSwitchCase="'@small'" nz-col [nzSpan]="smallWindows? 24 : 12" class="field_class">
+                <app-editor-field-type [fld]="fld" [size]="changeAttr()"></app-editor-field-type>
+              </div>
+              <div *ngSwitchDefault nz-col [nzSpan]="24" class="field_class">
+                <app-editor-field-type [fld]="fld" [size]="'@mid'"></app-editor-field-type>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      
+  </div>
+</div>

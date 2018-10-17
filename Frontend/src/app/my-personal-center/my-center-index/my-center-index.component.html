@@ -1,0 +1,21 @@
+<div class="d-bk" nz-row >
+  <div nz-col nzSm="24" nzXs="24" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}"
+       [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}" style="background-color:#ffffff">
+    <div nz-row nzGutter="10">
+
+      <div nz-col nzSpan="7" class="body">
+        <app-user-info-profile [ismyself]="true" [user]="user"></app-user-info-profile>
+        <nz-divider></nz-divider>
+
+        <div class="about-me">
+          <pre>{{user?.description}}</pre>
+        </div>
+      </div>
+
+      <div nz-col nzSpan="17" class="body right">
+        <app-my-index-body [favorite]="favorites" [collections]="collections" [pending_show]="pending_show"
+        [pending_wrong_show]="pending_wrong_show" ></app-my-index-body>
+      </div>
+    </div>
+  </div>
+</div>

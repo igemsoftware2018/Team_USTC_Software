@@ -1,0 +1,64 @@
+<ng-container [ngSwitch]="fld.type">
+
+  <div *ngSwitchCase="'input'" nz-row>
+    <!-- Input 窗口 -->
+    <ng-container *ngIf="size === '@small'">
+        <div nz-col [nzXl]="{span:6,offset:2}" [nzLg]="{span:6,offset:2}" [nzMd]="{span:8,offset:0}" [nzSm]="{span:8,offset:0}">
+            <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
+        </div>
+        <div nz-col [nzXl]="8" [nzLg]="8" [nzMd]="8" [nzSm]="8">
+            <input [(ngModel)]='fld.value' name={{fld.label}} class="fld_input"/>
+        </div>
+        <div nz-col [nzXl]="8" [nzLg]="8" [nzMd]="8" [nzSm]="8">
+            <label *ngIf="fld.unit" class="fld_unit">&nbsp;&nbsp;{{fld.unit}}</label>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="size === '@mid'">
+        <div nz-col [nzXl]="{span:3,offset:1}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
+            <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
+        </div>
+        <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
+            <input [(ngModel)]='fld.value' name={{fld.label}} class="fld_input"/>
+        </div>
+        <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
+            <label *ngIf="fld.unit" class="fld_unit">&nbsp;&nbsp;{{fld.unit}}</label>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="size === '@big'">
+        <div nz-col [nzXl]="{span:3,offset:1}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
+            <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
+        </div>
+        <div nz-col [nzXl]="18" [nzLg]="18" [nzMd]="18" [nzSm]="18">
+            <input [(ngModel)]='fld.value' name={{fld.label}} class="fld_input"/>
+        </div>
+        <div nz-col [nzXl]="2" [nzLg]="2" [nzMd]="2" [nzSm]="2">
+            <label *ngIf="fld.unit" class="fld_unit">&nbsp;&nbsp;{{fld.unit}}</label>
+        </div>
+    </ng-container>
+
+  </div>
+
+
+
+
+  <div *ngSwitchCase="'select'" nz-row>
+        <!-- Select 窗口 -->
+        <div nz-col [nzXl]="{span:3,offset:1}" [nzLg]="{span:3,offset:1}" [nzMd]="{span:4,offset:0}" [nzSm]="{span:4,offset:0}">
+            <label class="fld_name">{{fld.label}}&nbsp;&nbsp;</label>
+        </div>
+        <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
+            <select [(ngModel)]='fld.value' class="fld_input" *ngIf="!changed" (change)="changeInToInput()">
+                <option value="" disabled>Choose a state</option>
+                <option *ngFor="let opt of options" [value]="opt" [selected]="opt === fld.value">{{opt}}</option>
+                <option value="input">Input by yourself</option>
+            </select>
+            <input [(ngModel)]='fld.value' name={{fld.label}} class="fld_input" *ngIf="changed"/>
+        </div>
+        <div nz-col [nzXl]="4" [nzLg]="4" [nzMd]="4" [nzSm]="4">
+            <label *ngIf="fld.unit" class="fld_unit">&nbsp;&nbsp;{{fld.unit}}</label>
+        </div>
+    </div>
+
+</ng-container>

@@ -1,0 +1,24 @@
+
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label nzXs="4" nzSm="4" nzMd="4" nzLg="4" nzXl="2">Title</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <input [ngModelOptions]="{standalone: true}" nz-input placeholder="Basic usage" [(ngModel)]="editor.report.title">
+    </nz-form-control>
+  </nz-form-item >
+
+  <nz-form-item>
+    <nz-form-label nzXs="4" nzSm="4" nzMd="4" nzLg="4" nzXl="2">Labels</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [ngModelOptions]="{standalone: true}" nzMode="tags" style="width: 100%;" nzPlaceHolder="Tag Mode" [(ngModel)]="editor.report.label">
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item >
+
+  <nz-form-item>
+    <nz-form-label nzXs="4" nzSm="4" nzMd="4" nzLg="4" nzXl="2">Abstract</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <textarea nz-input [ngModelOptions]="{standalone: true}" placeholder="Abstract here" [nzAutosize]="{ minRows: 4, maxRows: 6 }" [(ngModel)]="editor.report.introduction"></textarea>
+    </nz-form-control>
+  </nz-form-item >
+</form>

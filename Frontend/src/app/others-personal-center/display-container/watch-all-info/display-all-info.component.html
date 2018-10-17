@@ -1,0 +1,66 @@
+<div>
+<nz-tabset nzSize="large">
+  <nz-tab nzTitle="Reports">
+    <!--
+    <div nz-col nzOffset="18" class="sort">
+      <i class="anticon anticon-swap"></i>
+    </div>
+    -->
+    <!-- for pending -->
+    <div *ngIf="pending_show&&!pending_wrong_show">
+      <div class="pending-position">
+        <app-pending></app-pending>
+      </div>
+    </div>
+    <div *ngIf="pending_wrong_show">
+      <div class="pending-position">
+        <app-wrong-pending></app-wrong-pending>
+      </div>
+    </div>
+    <!-- for pending  -->
+    <div *ngIf="!pending_show&&!pending_wrong_show">
+      <div *ngFor="let report of user.reports">
+        <app-my-report [report]="report" [bkcolor]="'#F2F2F2'"></app-my-report>
+      </div>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Following">
+    <!-- for pending -->
+    <div *ngIf="pending_show&&!pending_wrong_show">
+      <div class="pending-position">
+        <app-pending></app-pending>
+      </div>
+    </div>
+    <div *ngIf="pending_wrong_show">
+      <div class="pending-position">
+        <app-wrong-pending></app-wrong-pending>
+      </div>
+    </div>
+    <!-- for pending  -->
+    <div *ngIf="!pending_show&&!pending_wrong_show">
+      <div  *ngFor="let otheruser of user.following">
+        <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" ></app-followuser>
+      </div>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Followers">
+    <!-- for pending -->
+    <div *ngIf="pending_show&&!pending_wrong_show">
+      <div class="pending-position">
+        <app-pending></app-pending>
+      </div>
+    </div>
+    <div *ngIf="pending_wrong_show">
+      <div class="pending-position">
+        <app-wrong-pending></app-wrong-pending>
+      </div>
+    </div>
+    <!-- for pending  -->
+    <div *ngIf="!pending_show&&!pending_wrong_show">
+    <div  *ngFor="let otheruser of user.followers">
+      <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'"></app-followuser>
+    </div>
+    </div>
+  </nz-tab>
+</nz-tabset>
+</div>

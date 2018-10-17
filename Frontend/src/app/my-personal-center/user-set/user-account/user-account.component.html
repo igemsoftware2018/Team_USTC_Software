@@ -1,0 +1,153 @@
+<div>
+  <h2 class="account_title">Password</h2>
+  <p>Change your password for safe.</p>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="18">
+      <form nz-form [formGroup]="useraccount" nzLayout="vertical" nzHasFeedback>
+        <nz-form-item>
+          <nz-form-label>Old password</nz-form-label>
+          <nz-form-control>
+            <input nz-input nz-input type="password" id="oldpassword" formControlName="oldpassword" required>
+          </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="useraccount.get('oldpassword').dirty && useraccount.get('oldpassword').hasError('required')">
+            Please input your password!
+          </nz-form-explain>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>New password</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="password" id="newpassword" formControlName="newpassword" >
+          </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="useraccount.get('newpassword').dirty && useraccount.get('newpassword').errors || useraccount.get('newpassword').pending ">
+            <ng-container *ngIf="useraccount.get('newpassword').hasError('forbiddenAlpha')">
+              Password must contain at least one alphanumeric characters!
+            </ng-container>
+            <ng-container *ngIf="useraccount.get('newpassword').hasError('forbiddenNumeric')
+                                  &&!useraccount.get('newpassword').hasError('forbiddenAlpha')">
+              Password must contain at least one numeric characters!
+            </ng-container>
+            <ng-container *ngIf="useraccount.get('newpassword').hasError('minlength')
+                                  &&!useraccount.get('newpassword').hasError('forbiddenNumeric')
+                                  &&!useraccount.get('newpassword').hasError('forbiddenAlpha')">
+              Too short (minimum is 7 characters)!
+            </ng-container>
+            <ng-container *ngIf="useraccount.get('newpassword').hasError('maxlength')
+                                  &&!useraccount.get('newpassword').hasError('minlength')
+                                  &&!useraccount.get('newpassword').hasError('forbiddenNumeric')
+                                  &&!useraccount.get('newpassword').hasError('forbiddenAlpha')">
+              Too long (maximum is 30 characters)!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label>Comfirm password</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword">
+            <!-- <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword" [(ngModel)]="useraccount.confirmpassword"> -->
+          </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="useraccount.get('confirmpassword').dirty && useraccount.get('confirmpassword').errors || useraccount.get('confirmpassword').pending ">
+            <ng-container *ngIf="useraccount.hasError('forbiddenUnSame')">
+              Confirm password and new password must be the same!
+            </ng-container>
+            <!--
+            <ng-container *ngIf="useraccount.get('confirmpassword').hasError('forbiddenAlpha')">
+              <nz-alert nzType="error" nzMessage="Password must contain at least one alphanumeric characters!">
+              </nz-alert>
+            </ng-container>
+            <ng-container *ngIf="useraccount.get('confirmpassword').hasError('forbiddenNumeric')">
+              <nz-alert nzType="error" nzMessage="Password must contain at least one numeric characters!">
+              </nz-alert>
+            </ng-container>
+            <ng-container *ngIf="useraccount.get('confirmpassword').hasError('minlength')">
+              <nz-alert nzType="error" nzMessage="too short (minimum is 8 characters)!">
+              </nz-alert>
+            </ng-container>
+            <ng-container *ngIf="useraccount.get('confirmpassword').hasError('maxlength')">
+              <nz-alert nzType="error" nzMessage="too long (maximum is 30 characters)!">
+              </nz-alert>
+            </ng-container>
+            -->
+          </nz-form-explain>
+        </nz-form-item>
+        <nz-form-item nz-row style="margin-bottom:8px;">
+          <nz-form-control [nzSpan]="14">
+            <button nz-button nzType="primary" [disabled]="!useraccount.valid" (click)="update_password()">Update Password</button>
+            <a> I forgot my password</a>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="userset0" [formGroup]="useraccount"> -->
+  <!--<div class="cardtitle">CHANGE USERNAME</div>
+  <nz-divider style="margin: 1vw 0;"></nz-divider>
+<div class="username">
+  <nz-form-item>
+    <p>Change Username</p>
+    <nz-form-control nz-col nzSpan="17">
+      <input nz-input id="name" formControlName="name" required>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row nzType="flex" nzJustify="flex-start" >
+    <nz-form-control nz-col nzSpan="8">
+      <button nz-button nzType="primary" style="
+      border-radius:1vw;
+      height:2.5vw;
+font-family: AvenirNext-Regular;
+font-size: 1.5vw;
+color: #FFFFFF;
+text-align: center;
+margin:0 auto;">Save</button>
+    </nz-form-control>
+  </div>
+</div>-->
+  <!-- <div class="cardtitle">CHANGE PASSWORD</div>
+
+  <nz-divider style="margin: 1vw 0;"></nz-divider>
+
+  <div class="changepassword">
+
+    <div class="inputpass" >
+      <nz-form-item>
+        <p>Old password</p>
+        <nz-form-control nz-col nzSpan="17">
+          <input nz-input type="password" id="oldpassword" formControlName="oldpassword" required>
+
+          <nz-form-explain *ngIf="useraccount.get('oldpassword').dirty&&useraccount.get('oldpassword').hasError('required')">Please input your password!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <p>New password</p>
+        <nz-form-control nz-col nzSpan="17">
+          <input nz-input type="password" id="newpassword" formControlName="newpassword" >
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <p>Confirm new password</p>
+        <nz-form-control nz-col nzSpan="17">
+          <input nz-input type="password" id="confirmpassword" formControlName="confirmpassword" [(ngModel)]="useraccount.confirmpassword">
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div class="submitpass" nz-row nzType="flex" nzJustify="flex-start" >
+      <div class="updatepassword" nz-col nzSpan="8">
+        <button nz-button nzType="primary" style="
+        border-radius: 1vw;
+        height:2.5vw;
+font-family: AvenirNext-Regular;
+font-size: 1.5vw;
+color: #FFFFFF;
+text-align: center;"(click)="update_password()">Update password</button>
+      </div>
+      {{this.useraccount.value.oldpassword}}
+      <div class="forget" nz-col nzSpan="10">
+        I forgot my password
+      </div>
+    </div>
+  </div>
+</div> -->

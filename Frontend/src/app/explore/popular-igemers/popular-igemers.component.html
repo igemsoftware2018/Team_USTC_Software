@@ -1,0 +1,17 @@
+<!-- for pending -->
+<div *ngIf="pending_show&&!pending_wrong_show">
+  <div class="pending-position">
+    <app-pending></app-pending>
+  </div>
+</div>
+<div *ngIf="pending_wrong_show">
+  <div class="pending-position">
+    <app-wrong-pending></app-wrong-pending>
+  </div>
+</div>
+<!-- for pending  -->
+<div *ngIf="!pending_show">
+  <div class="igemer-item">
+    <app-igemer-card *ngFor="let igemer of igemers" [igemer]="igemer"></app-igemer-card>
+  </div>
+</div>

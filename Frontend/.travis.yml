@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - 10.6
+
+addons:
+  ssh_known_hosts: 118.99.13.194
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_2363e65e6314_key -iv $encrypted_2363e65e6314_iv
+    -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - npm install @angular/cli -g
+  - npm install
+
+branches:
+  only:
+    - dev
+
+script:
+  - ng build
+  - tar -jcf a.tar.bz2 dist
+  - scp a.tar.bz2 root@118.99.13.194:~/igem
+  - ssh root@118.99.13.194 'cd igem && ./deploy.sh'

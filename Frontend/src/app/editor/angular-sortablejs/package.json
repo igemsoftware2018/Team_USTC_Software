@@ -1,0 +1,58 @@
+{
+  "name": "angular-sortablejs",
+  "version": "2.6.0",
+  "description": "SortableJS for Angular",
+  "main": "./dist/index.js",
+  "typings": "./dist/index",
+  "scripts": {
+    "start": "watch 'npm run build-local' src",
+    "build-local": "npm run build && cp -R dist ../angular-sortablejs-demo/node_modules/angular-sortablejs",
+    "build": "rimraf ./dist/* ./codegen/* && ngc -p tsconfig-dist.json",
+    "prepare": "npm run tslint && npm run build",
+    "tslint": "tslint ./app/**/*.ts -t verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SortableJS/angular-sortablejs.git"
+  },
+  "keywords": [
+    "angular2-sortable",
+    "angular2-sortablejs",
+    "angular-sortable",
+    "angular-sortablejs",
+    "ng2-sortable",
+    "ng2-sortablejs",
+    "ng-sortable",
+    "ng-sortablejs"
+  ],
+  "author": "smnbbrv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SortableJS/angular-sortablejs/issues"
+  },
+  "homepage": "https://github.com/SortableJS/angular-sortablejs#readme",
+  "devDependencies": {
+    "@angular/compiler": "4.0.1",
+    "@angular/compiler-cli": "4.0.1",
+    "@angular/core": "4.0.1",
+    "@types/node": "7.0.12",
+    "@types/systemjs": "0.20.2",
+    "git-validate": "2.2.2",
+    "rimraf": "2.6.1",
+    "rxjs": "^5.5.2",
+    "sortablejs": "^1.5.1",
+    "tslint": "5.1.0",
+    "typescript": "2.2.2",
+    "watch": "^1.0.2"
+  },
+  "peerDependencies": {
+    "sortablejs": ">=1.5.1",
+    "@angular/core": ">=4.0.0"
+  },
+  "files": [
+    "dist/"
+  ],
+  "pre-commit": [
+    "tslint"
+  ]
+}

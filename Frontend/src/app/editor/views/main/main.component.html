@@ -1,0 +1,22 @@
+<div style="width:100%;height: 55px;"> </div>
+<nz-alert nzType="warning" nzMessage="Please use a bigger screen to achieve a better experience." nzCloseText="Close Now" *ngIf="innerWidth < 670"></nz-alert>
+
+<div #editorMain nz-row [ngStyle]="{'height': editorHeight}" (window:resize)="onResize()">
+  <!-- This is the main page of editor-->
+
+  <div nz-col [nzSm]="{span:5,offset:0}" [nzMd]="{span:5,offset:0}" [nzLg]="{span:5,offset:0}" [nzXl]="{span:4,offset:1}" class="stepBar">
+    <!-- 工具栏 -->
+    <app-step-bar></app-step-bar>
+  </div>
+
+  <div nz-col nzSm="16" nzMd="16" nzLg="16" nzXl="16">
+    <!-- 编辑页面 -->
+    <app-edit-area></app-edit-area>
+  </div>
+
+  <div nz-col nzSm="3" nzMd="3" nzLg="3" nzXl="2">
+      <!-- 小按钮们 -->
+      <app-button-area></app-button-area>
+  </div>
+
+</div>

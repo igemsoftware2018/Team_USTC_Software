@@ -1,0 +1,33 @@
+<div class="d-bk" nz-row >
+  <div nz-col nzSm="24" nzXs="24" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}"
+       [nzXl]="{span:18, offset:3}" [nzXXl]="{span:18, offset:3}" style="background-color: #ffffff">
+     <div nz-row nzGutter="10">
+       <div nz-col nzSpan="7" >
+         <app-siminfo [user]="simuser" ></app-siminfo>
+         <nz-divider></nz-divider>
+         <!-- for pending -->
+         <div *ngIf="pending_show&&!pending_wrong_show">
+           <div class="pending-position">
+             <app-pending></app-pending>
+           </div>
+         </div>
+         <div *ngIf="pending_wrong_show">
+           <div class="pending-position">
+             <app-wrong-pending></app-wrong-pending>
+           </div>
+         </div>
+         <!-- for pending  -->
+         <div *ngIf="!pending_show&&!pending_wrong_show">
+         <app-classification [userid]="simuser.id"
+                             [all_labels]="labels"
+                             [all_archive]="archive"
+                             [all_pop_report]="popular_reports">
+         </app-classification>
+         </div>
+       </div>
+       <div nz-col nzSpan="17" >
+         <router-outlet></router-outlet>
+       </div>
+     </div>
+  </div>
+</div>

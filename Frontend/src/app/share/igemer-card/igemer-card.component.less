@@ -1,0 +1,95 @@
+@width: 220px;
+@height: 120px;
+*{
+  font-family: Helvetica;
+}
+.igemer-info-container{
+  margin-top: 20px;
+}
+.igemer-card{
+  width:@width;
+  height:@height;
+  background-color: #FFFFFF;//#92FAFC;//#53A7CA;//#49A384;//#FFFFFF;
+  margin:25px 10px 0px 10px;
+  text-align: left;
+}
+::ng-deep .ant-card-hoverable{
+  cursor: default;
+}
+.igemer-avatar{
+  position: relative;
+  left:20px;
+  top:20px;
+  border-radius: 50%;
+  width:60px;
+  height:60px;
+  float:left;
+  z-index:1;
+}
+.igemer-name-container{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+.igemer-name{
+  font-family: HelveticaNeue-Bold;
+  font-size: 19px;
+}
+.name-description{
+  position:relative;
+  left:40px;
+  max-width:140px;
+  z-index:0;
+}
+
+.report-abstract{
+  color: rgba(0,0,0,.45);
+}
+.igemer-description-container{
+  height:35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2; /* 控制显示的行数 */
+  // padding:5px 0px 5px 0px;
+}
+.igemer-description{
+  word-wrap:break-word;
+  font-size:12px;
+  // padding:5px 0px 5px 0px;
+}
+
+/* 指向用户头像的动画 */
+.cover-hover{
+  position: absolute;
+  left:20px;
+  top:19.5px;
+  border-radius: 50%;
+  width:60px;
+  height:60px;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+.cover-hover:hover{
+  -webkit-animation: show 0.4s 1 ease-in both;
+}
+@-webkit-keyframes show {
+  0% { visibility: hidden; opacity: 0}
+  100% { visibility: visible; opacity:1}
+}
+.follow-anticon, .more-anticon{
+  position: relative;
+  top: 50%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: #BBBBBB;
+}
+.more-anticon{
+  right: 30px;
+}
+.follow-anticon:hover, .more-anticon:hover{
+  color:  #FFFFFF;
+  cursor:pointer;
+}

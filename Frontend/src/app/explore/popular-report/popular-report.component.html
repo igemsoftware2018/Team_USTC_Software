@@ -1,0 +1,19 @@
+<!-- for pending -->
+<div *ngIf="pending_show&&!pending_wrong_show">
+  <div class="pending-position">
+    <app-pending></app-pending>
+  </div>
+</div>
+<div *ngIf="pending_wrong_show">
+  <div class="pending-position">
+    <app-wrong-pending></app-wrong-pending>
+  </div>
+</div>
+<!-- for pending  -->
+<div *ngIf="!pending_show&&!pending_wrong_show">
+  <div class="report-item">
+    <app-report-card *ngFor="let report of reports" [report]="report" ></app-report-card>
+  </div>
+</div>
+
+

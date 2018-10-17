@@ -1,0 +1,39 @@
+.panda-hand{
+  max-width: 20%;
+  height:auto;
+  //position: absolute;
+  //right:140px;
+  //top: 70px;
+  order: -1;
+}
+
+.panda-shake-hand{
+  transform-origin: bottom right;
+  -webkit-animation: shake 1.5s infinite ease-in-out;
+}
+
+.panda-body{
+  position:relative;
+  right:10px;
+  z-index:1;
+}
+.panda-body:hover{
+  cursor: pointer;
+}
+.panda{
+  display: flex;
+  display: -webkit-flex;
+  align-items: flex-end;
+  justify-content:center;
+}
+
+@-webkit-keyframes shake {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-30deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.img-response{
+  max-width: 100%;
+  height:auto;
+}

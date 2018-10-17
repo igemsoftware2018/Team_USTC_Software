@@ -1,0 +1,184 @@
+<div>
+  <h2 class="account_title">Account</h2>
+  <p>Personal Informations</p>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="18">
+      <form nz-form nzLayout="vertical" [formGroup]="usermes" nzHasFeedback>
+        <!-- Actual Name -->
+        <nz-form-item>
+          <nz-form-label>Actual Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="Actual Name"
+                   id="actualname" name="actualname" formControlName="actualname">
+          </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors ">
+            <ng-container *ngIf="usermes.get('actualname').hasError('required')">
+              Please input your username!
+            </ng-container>
+            <ng-container *ngIf="usermes.get('actualname').hasError('minlength')">
+              too long (maximum is 4 characters)!
+            </ng-container>
+            <ng-container *ngIf="usermes.get('actualname').hasError('forbiddenName')">
+              forbiddenname!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-item >
+        <!-- Actual Name -->
+        <nz-form-item>
+          <nz-form-label>Location</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="Location"  id="location" name="location" formControlName="location">
+          </nz-form-control>
+          <!-- <nz-form-explain class="error-explain" *ngIf="usermes.get('location').dirty && usermes.get('location').errors ">
+            <ng-container *ngIf="usermes.get('location').hasError('required')">
+              Please input your location!
+            </ng-container>
+          </nz-form-explain> -->
+        </nz-form-item>
+        <!-- School or Organization -->
+        <nz-form-item>
+          <nz-form-label>School or Organization</nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="Organization" id="organization" name="organization" formControlName="organization">
+          </nz-form-control>
+          <!-- <nz-form-explain class="error-explain" *ngIf="usermes.get('organization').dirty && usermes.get('organization').errors ">
+            <ng-container *ngIf="usermes.get('organization').hasError('required')">
+              Please input your school or organization!
+            </ng-container>
+          </nz-form-explain> -->
+        </nz-form-item>
+        <!-- School or Organization -->
+        <nz-form-item>
+          <nz-form-label>Description</nz-form-label>
+          <nz-form-control>
+            <textarea nz-input rows="4" placeholder="description" name="description" formControlName="description"></textarea>
+          </nz-form-control>
+          <nz-form-explain class="error-explain" *ngIf="usermes.get('description').dirty && usermes.get('description').errors ">
+            <ng-container *ngIf="usermes.get('description').hasError('maxlength')">
+              too long (maximum is 200 characters)!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-item>
+        <nz-form-item nz-row style="margin-bottom:8px;">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" (click)="onSave()">Update Profile</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div nz-col nzSpan="6" class="PicSide">
+      <div nz-row>
+        <img nz-col [src]="sim.myInfo.avatar_url" class="profile_pic"/>
+      </div>
+      <nz-upload [nzCustomRequest]="picHttpMethod">
+        <button nz-button style="width:100%; margin-top: 20px;">
+          <i class="anticon anticon-upload"></i><span>Update</span>
+        </button>
+      </nz-upload>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="userset0" [formGroup]="usermes" >
+  <div class="cardtitle">BASIC INFORMATION</div>
+  <div class="savebutton">
+    <button nz-button nzType="primary" style="
+font-family: AvenirNext-Regular;
+height:2.2vw;
+border-radius: 1vw;
+font-size: 1.5vw;
+color: #FFFFFF;
+text-align: center;" (click)="onSave()">Save</button>
+  </div>
+  <div class="backbutton">
+    <button nz-button nzType="default" style="background-color:#DCDCDC;
+     border-radius: 1vw;
+     height:2.2vw;
+     font-family: AvenirNext-Regular;
+     font-size: 1.5vw;
+     color: #4A4A4A;
+     text-align: center;">Back</button>
+  </div>
+  <nz-divider style="margin: 1vw 0;"></nz-divider>
+  <div nz-row nzType="flex" nzJustify="space-around" style="display:-webkit-flex;display:flex; align-items:flex-start;">
+    <nz-upload
+      class="myavatar"
+      nzAction="https://jsonplaceholder.typicode.com/posts/"
+      nzName="avatar"
+      [nzShowUploadList]="false"
+      [nzBeforeUpload]="beforeUpload"
+      (nzChange)="handleChange($event)">
+      <nz-form-control class="myphoto" >
+        <img [src]="personalmes.photo" style="width:9vw;border-radius: 4vw;"/>
+      </nz-form-control>
+      <button nz-button  style=" background: #3288FF;
+             border-radius: 1vw;
+             height:2.2vw;
+             font-family: AvenirNext-Regular;
+            font-size: 1.5vw;
+            color: #FFFFFF;
+            text-align: center;
+            margin:2vw 0 0 1vw;
+padding:0 1vw;">Upload
+      </button>
+    </nz-upload>
+    <div class="fenge" nz-row nzType="flex" nzJustify="center">
+      <nz-divider nzType="vertical" style="height:38vw;"></nz-divider>
+    </div>
+    <div class="inputgroup">
+        <nz-form-item>
+            <p>Actualname</p>
+          <nz-form-control nz-col nzSpan="8" class="zinput">
+            <input nz-input placeholder="{{personalmes.actualname}}" id="actualname" name="actualname" formControlName="actualname" required>
+            <nz-form-explain *ngIf="usermes.get('actualname').dirty && usermes.get('actualname').errors&&issaved">
+              <ng-container *ngIf="usermes.get('actualname').hasError('required')">
+                Please input your username!
+              </ng-container>
+              <ng-container *ngIf="usermes.get('actualname').hasError('minlength')">
+                mingLength more than 4!
+              </ng-container>
+              <ng-container *ngIf="usermes.get('actualname').hasError('forbiddenName')">
+                forbiddenname!
+              </ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+      <nz-form-item>
+          <p>Location</p>
+        <nz-form-control>
+          <input nz-input placeholder="{{personalmes.location}}"  id="location" name="location" formControlName="location" required>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+            <p>Bio</p>
+        <nz-form-control>
+            <textarea row="10" col="10" nz-input placeholder="{{personalmes.description}}" name="description" formControlName="description"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      <nz-form-item>
+          <p>School or Company</p>
+        <nz-form-control>
+          <input nz-input placeholder="{{personalmes.organization}}" id="organization" name="organization" formControlName="organization" required>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+          <p>Email Address</p>
+        <nz-form-control>
+          <input nz-input placeholder="{{personalmes.email}}" id="email" name="email" formControlName="email" required>
+          <nz-form-explain *ngIf="usermes.get('email').dirty&&usermes.get('email').errors&&issaved">
+            <ng-container *ngIf="usermes.get('email').hasError('email')">
+              The input is not valid E-mail!
+            </ng-container>
+            <ng-container *ngIf="usermes.get('email').hasError('required')">
+              Please input your E-mail!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+  </div>
+
+</div> -->
+

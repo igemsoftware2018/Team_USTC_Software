@@ -1,0 +1,41 @@
+{
+    "DATABASE": {
+        "NAME": "",
+        "USER": "",
+        "PASSWORD": "",
+        "HOST": "",
+        "PORT": 3306,
+        "TEST": {
+            "NAME": "",
+            "CHARSET": "utf8",
+            "COLLATION": null,
+            "MIRROR": null
+        }
+    },
+    "PLUGINS": [
+        "biohub.abacus",
+        "biohub.biocircuit",
+        "biohub.biomap"
+    ],
+    "TIMEZONE": "UTC",
+    "UPLOAD_DIR": "",
+    "REDIS_URI": "",
+    "SECRET_KEY": "",
+    "MAX_TASKS": 20,
+    "TASK_MAX_TIMEOUT": 180,
+    "ES_URL": "http://127.0.0.1:9200/",
+    "EMAIL": {
+        "HOST_PASSWORD": "",
+        "HOST_USER": "",
+        "HOST": "",
+        "PORT": 465
+    },
+    "CORS": [],
+    "THROTTLE": {
+        "rate": 15,
+        "experience": 86400,
+        "post": 15,
+        "vote": 15,
+        "register": 3600
+    }
+}

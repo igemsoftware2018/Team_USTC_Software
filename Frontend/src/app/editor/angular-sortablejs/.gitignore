@@ -1,0 +1,15 @@
+node_modules
+dist
+codegen
+npm-debug.log
+*.bak
+*.tgz
+*.idea
+
+#System Files
+.DS_Store
+Thumbs.db
+*.iml
+
+#yarn
+yarn-error.log

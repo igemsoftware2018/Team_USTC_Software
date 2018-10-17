@@ -1,0 +1,178 @@
+<div nz-row >
+  <div nz-col nzXS="24" [nzSm]="{span:22,offset:1}" [nzMd]="{span:22,offset:1}" [nzLg]="{span:20, offset:2}"
+       [nzXl]="{span:18, offset:3}" [nzXXl]="{span:16, offset:4}">
+    <div nz-row>
+      <div nz-col nzOffset="2" nzSpan="20">
+        <form nz-form nzLayout="vertical" [formGroup]="searchForm"
+                (ngSubmit)="submitForm()" class="search-input" class="search-input">
+          <nz-form-item >
+          <nz-form-control nzSpan="24">
+            <nz-input-group>
+              <nz-mention #mentions [nzSuggestions]="suggestions" [nzPrefix]="prefix">
+                <input (keyup.enter)="submitForm()" nz-input class="search-content" nzMentionTrigger
+                       type="text" formControlName="search_info" placeholder="input search text">
+              </nz-mention>
+            </nz-input-group>
+          </nz-form-control>
+          </nz-form-item>
+        </form>
+        <div class="input-tags">
+          <span class="tag-label">filters:&nbsp;&nbsp;&nbsp;</span>
+            <nz-tag [nzColor]="filtertype2color[filter.type]" *ngFor="let filter of filters">
+              {{filter.type + ' ' + filterrel2verb[filter.rel] + ' ' + filter.value}}
+            </nz-tag>
+        </div>
+      </div>
+
+      <div nz-col nzSpan="24">
+        <nz-tabset nz-row style="text-align: center;">
+          <nz-tab nz-col nzSpan="4" [nzTitle]="AllTemplate">
+            <ng-template #AllTemplate>
+                <a>All</a>
+            </ng-template>
+              <app-dynamic-sort *ngIf="order_keys.length > 0" [titles]="order_keys" [ResultsTempates]="order_templates" >
+              </app-dynamic-sort>
+            <ng-template #usersTemplate>
+              <app-followuser *ngFor="let user of arrays.user" [otheruser]="user" [bkcolor]="'#FFFFFF'" ></app-followuser>
+            </ng-template>
+            <ng-template #reportsTemplate>
+              <app-others-report *ngFor="let report of arrays.report" [report]="report"  [bkcolor]="'#FFFFFF'"></app-others-report>
+            </ng-template>
+            <ng-template #dbsTemplate>
+              <div class="db-item">
+                <app-dbsearchresult *ngFor="let db of arrays.db" [db]="db"></app-dbsearchresult>
+              </div>
+            </ng-template>
+            <ng-template #blastTemplate>
+              <div class="db-item">
+                <div nz-row class="blust">
+                  <div nz-col nzSpan="8">
+                    <nz-card class="blast-long" [nzHoverable]="true">
+                      <p class="blast-title">Nucleotide BLAST</p>
+                      <p class="blast-info">nucleotide to nucleotide</p>
+                    </nz-card>
+                  </div>
+                  <div nz-col nzSpan="8">
+                    <nz-card class="blast-short" [nzHoverable]="true">
+                      <p class="blast-title">blasx</p>
+                      <p class="blast-info">translated nucleotide to protein</p>
+                    </nz-card>
+                    <nz-card class="blast-short" [nzHoverable]="true">
+                      <p class="blast-title">tblastn</p>
+                      <p class="blast-info">protein to translated nucleotide</p>
+                    </nz-card>
+                  </div>
+                  <div nz-col nzSpan="8">
+                    <nz-card class="blast-long" [nzHoverable]="true">
+                      <p class="blast-title">Protein BLAST</p>
+                      <p class="blast-info">protein to protein</p>
+                    </nz-card>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </nz-tab>
+
+          <nz-tab nz-col nzSpan="4" [nzTitle]="ReportsTemplate">
+            <ng-template #ReportsTemplate>
+              <a>Reports</a>
+            </ng-template>
+            <div *ngFor="let report of arrays.report" class="content">
+              <app-others-report [report]="report"  [bkcolor]="'#FFFFFF'"></app-others-report>
+            </div>
+          </nz-tab>
+
+          <nz-tab nz-col nzSpan="4" [nzTitle]="UsersTemplate">
+            <ng-template #UsersTemplate>
+                <a>Users</a>
+            </ng-template>
+            <div>
+              <app-followuser *ngFor="let user of arrays.user" [otheruser]="user" [bkcolor]="'#FFFFFF'" ></app-followuser>
+            </div>
+          </nz-tab>
+
+          <!--<nz-tab nz-col nzSpan="4" [nzTitle]="ThesisTemplate">-->
+            <!--<ng-template #ThesisTemplate>-->
+              <!--<nz-dropdown>-->
+              <!--<a nz-dropdown>-->
+                <!--Thesis <i class="anticon anticon-down"></i>-->
+              <!--</a>-->
+              <!--<ul nz-menu nzSelectable>-->
+                <!--<li nz-menu-item>-->
+                  <!--<a>1st menu item</a>-->
+                <!--</li>-->
+                <!--<li nz-menu-item>-->
+                  <!--<a>2nd menu item</a>-->
+                <!--</li>-->
+                <!--<li nz-menu-item>-->
+                  <!--<a>3rd menu item</a>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</nz-dropdown>-->
+            <!--</ng-template>-->
+          <!--</nz-tab>-->
+
+          <!--<nz-tab nz-col nzSpan="4" [nzTitle]="ProteinTemplate">-->
+            <!--<ng-template #ProteinTemplate>-->
+                <!--<nz-dropdown>-->
+                  <!--<a nz-dropdown>-->
+                    <!--Proteins <i class="anticon anticon-down"></i>-->
+                  <!--</a>-->
+                  <!--<ul nz-menu nzSelectable>-->
+                    <!--<li nz-menu-item>-->
+                      <!--<a>1st menu item</a>-->
+                    <!--</li>-->
+                    <!--<li nz-menu-item>-->
+                      <!--<a>2nd menu item</a>-->
+                    <!--</li>-->
+                    <!--<li nz-menu-item>-->
+                      <!--<a>3rd menu item</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</nz-dropdown>-->
+            <!--</ng-template>-->
+          <!--</nz-tab>-->
+
+          <nz-tab nz-col nzSpan="4" [nzTitle]="DatabaseTemplate">
+            <ng-template #DatabaseTemplate>
+                <a>Database</a>
+            </ng-template>
+            <div class="db-item">
+              <app-dbsearchresult *ngFor="let db of arrays.db" [db]="db"></app-dbsearchresult>
+            </div>
+          </nz-tab>
+
+          <nz-tab nz-col nzSpan="4" [nzTitle]="BlastTemplate">
+            <ng-template #BlastTemplate>
+                <a>Blast</a>
+            </ng-template>
+            <div nz-row class="blust">
+              <div nz-col nzSpan="8">
+                <nz-card class="blast-long" [nzHoverable]="true">
+                  <p class="blast-title">Nucleotide BLAST</p>
+                  <p class="blast-info">nucleotide to nucleotide</p>
+                </nz-card>
+              </div>
+              <div nz-col nzSpan="8">
+                  <nz-card class="blast-short" [nzHoverable]="true">
+                    <p class="blast-title">blasx</p>
+                    <p class="blast-info">translated nucleotide to protein</p>
+                  </nz-card>
+                  <nz-card class="blast-short" [nzHoverable]="true">
+                    <p class="blast-title">tblastn</p>
+                    <p class="blast-info">protein to translated nucleotide</p>
+                  </nz-card>
+              </div>
+              <div nz-col nzSpan="8">
+                <nz-card class="blast-long" [nzHoverable]="true">
+                  <p class="blast-title">Protein BLAST</p>
+                  <p class="blast-info">protein to protein</p>
+                </nz-card>
+              </div>
+            </div>
+          </nz-tab>
+        </nz-tabset>
+      </div>
+   </div>
+  </div>
+</div>

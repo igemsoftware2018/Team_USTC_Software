@@ -1,0 +1,9 @@
+-r base.txt
+-r test-base.txt
+-r doc-base.txt
+-r codestyle-base.txt
+
+-r biobrick-base.txt
+-r biocircuit-base.txt
+
+coloredlogs==7.3.1

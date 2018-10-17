@@ -1,0 +1,32 @@
+<div nz-row>
+  <!-- panda -->
+
+  <!-- input form -->
+  <div nz-col [nzXs]="{offset:2, span:20}" [nzSm]="{offset:5, span:14}" [nzMd]="{offset:7, span: 10}"
+       [nzLg]="{offset:8, span:8}" [nzXl]="{offset:9, span:6}"  [nzXXl]="{offset:10, span:4}" nzOffset="9" nzSpan="6">
+
+    <div nz-row>
+      <div class="panda" nz-col nzOffset="7" nzSpan="10">
+        <app-panda [shake]="false"></app-panda>
+      </div>
+    </div>
+
+    <div nz-row class="reset-form">
+      <div nz-col nzOffset="4" nzSpan="16" align="center">
+        <p class="reset-title" >Reset your Password</p>
+      </div>
+      <div nz-col nzOffset="1" nzSpan="22">
+        <p class="enter-content">
+          Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.
+        </p>
+      </div>
+
+      <div nz-col nzOffset="4" nzSpan="16" style="margin-bottom:20px">
+        <button type="button" nz-button nzValue="large" class="reset-form-button" [nzType]="'primary'" >
+          Return to Sign In
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

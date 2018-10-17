@@ -1,0 +1,50 @@
+<!-- <div>
+  <div nz-row nzType="flex" nzJustify="center" class="select-search">
+    <div nz-col nzSpan="6" class="Time">
+      <label>Time:</label>
+      <nz-select style="width:5vw;border:none; font-size:1.4vw;" nzPlaceHolder="all" nzSize="small">
+      </nz-select>
+      <nz-select style="width: 5vw;font-size:1.4vw;" nzPlaceHolder="all" nzSize="small">
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="6" class="Labels" >
+      <label>Labels:</label>
+      <nz-select  nzPlaceHolder="all" nzSize="small" style="margin-left: 1vw;width:6vw;font-size:1.4vw;">
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="10" class="reportsearch">
+      <nz-input-group nzSearch nzSize="small" style="margin:0 0.5vw;" >
+        <input placeholder="Search by Keywords" nz-input [(ngModel)]="inputValue" (ngModelChange)="onChange($event)" style="font-size:1.2vw;height:2.4vw; width:20vw;padding-right:1vw;border-radius: 0.4vw;">
+      </nz-input-group>
+        <button nz-button nzType="primary" style="
+font-family: AvenirNext-Regular;
+border-radius: 0.5vw;
+height:2.5vw;
+color: #FFFFFF;
+text-align: center;
+font-size: 1.2vw;
+">Search</button>
+    </div>
+  </div>
+  <div class="reportshow">
+    <div *ngFor="let myreport of myreports" class="myreportshow" >
+      <div class="reportTag" nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col nzSpan="20" class="reportTitle">
+          <button *ngIf="myreport.isDraft" nz-button nzType="default" nzSize="small" style="height:2vw;margin-right: 1vw;font-size:1.2vw;">Draft</button>
+          <a>{{myreport.title}}</a>
+        </div>
+        <a>Delete</a>
+      </div>
+      <div class="extraInformation">
+        <p>{{myreport.Date}}</p>
+        <div *ngIf="!myreport.isDraft" class="read-comment">
+          <img src="https://github.com/USTCSoftware2018/Art/blob/master/%E6%9B%B4%E6%96%B0%E8%87%AA%E5%B7%B1%E6%89%93%E5%BC%80%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE/%E5%9B%BE/%E9%98%85%E8%AF%BB.png?raw=true"
+          ><p>{{myreport.readNum}}</p>
+          <img src="https://github.com/USTCSoftware2018/Art/blob/master/%E6%9B%B4%E6%96%B0%E8%87%AA%E5%B7%B1%E6%89%93%E5%BC%80%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%AE%BE%E7%BD%AE/%E5%9B%BE/%E8%AF%84%E8%AE%BA.png?raw=true"
+               style="margin-left: 2vw;">
+          <p>{{myreport.commentNum}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div> -->

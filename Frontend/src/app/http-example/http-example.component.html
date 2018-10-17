@@ -1,0 +1,46 @@
+<br><br><br><br>
+<div nz-row>
+  <div nz-col nzSpan="8"></div>
+  <div nz-col nzSpan="8">
+      <h1 style="text-align: center">
+          This is Http-Example Page
+      </h1>
+  </div>
+  <div nz-col nzSpan="8"></div>
+
+</div>
+<br><br>
+
+<div nz-row>
+    <div nz-col nzSpan="4"></div>
+    <div nz-col nzSpan="8">
+        <span style="font-size: 30px; text-align: center">Name:</span><span style="color:rgb(18, 167, 212); font-size: 2em; font-family: Arial, Helvetica, sans-serif"> {{ choice }} </span>
+    </div>
+    <div nz-col nzSpan="8"></div>
+</div>
+<div nz-row style="margin-bottom: 20px">
+
+    <div nz-col nzOffset="4" nzSpan="8">
+        <nz-select [(ngModel)]="choice" (ngModelChange)="refresh()" style="width: 100%;" nzShowSearch nzAllowClear nzPlaceHolder="Select a function">
+            <nz-option *ngFor="let s of FunctionList" nzLabel="{{s.name}}" nzValue="{{s.lable}}"></nz-option>
+            <nz-option *ngFor="let s of EditorList" nzLabel="{{s.name}}" nzValue="{{s.lable}}"></nz-option>
+        </nz-select>
+    </div>
+</div>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="4"></div>
+  <div nz-col nzSpan="8">
+    <label style="font-size: 20px">request</label>
+    <textarea [(ngModel)]="request" nz-input placeholder="request data"
+    [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
+    </textarea>
+    <button (click)="fires()" nz-button nzType="primary" style="font-family:Arial, Helvetica, sans-serif; font-weight: 600">Send</button>
+  </div>
+  <div nz-col nzSpan="8">
+    <label style="font-size: 20px">response</label>
+    <textarea [(ngModel)]="response" placeholder="response data"
+    nz-input [nzAutosize]="{ minRows: 10, maxRows: 10 }" style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600">
+    </textarea>
+  </div>
+  <div nz-col nzSpan="4"></div>
+</div>

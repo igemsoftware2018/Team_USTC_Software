@@ -1,0 +1,47 @@
+<nz-card class="report-card" nzLoading="false" [nzActions]="[actionLike,actionCollection]">
+  <div class="report-info-container">
+    <div class="report-info">
+      <div nz-row>
+        <div nz-col nzSpan="8">
+          <a (click)="gotoIndex()"><nz-avatar [nzSrc]="report.author.avatar_url"></nz-avatar></a>
+          <span>&nbsp;&nbsp;</span>
+        </div>
+        <div nz-col nzSpan="16" class="report-title-container">
+          <a (click)="gotoReport()" class="report-title">{{report.title}}</a>
+        </div>
+      </div>
+      <div class="report-abstract-container">
+        <p class="report-abstract">{{report.abstract}}</p>
+      </div>
+    </div>
+  </div>
+</nz-card>
+
+<ng-template #actionLike>
+  <a style="cursor: pointer" (click)="toggleLiked()"><i class="anticon"[class.anticon-like-o]="!isliked" [class.anticon-like]="isliked"></i></a>
+</ng-template>
+<ng-template #actionCollection>
+  <a style="cursor: pointer" (click)="showCollect()"><i class="anticon" [class.anticon-tag-o]="!iscollected" [class.anticon-tag]="iscollected"></i></a>
+</ng-template>
+
+<nz-modal [(nzVisible)]="collecting" nzTitle="Collect a Report" nzOkText="Collect" [nzOkLoading]="isOkLoading"
+          nzCancelText="Cancel" (nzOnOk)="collectReport()" (nzOnCancel)="notShow()">
+  <form nz-form [formGroup]="collectForm" (ngSubmit)="submitForm()" nzHasFeedback>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="collection">Group name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-input-group >
+          <input type="text" nz-input formControlName="collection" placeholder="Collect Group">
+        </nz-input-group>
+        <nz-form-explain *ngIf="collectForm.dirty && (collection.errors || collection.pending)">
+          <ng-container *ngIf="collection.hasError('required')">
+            Please enter the group name!
+          </ng-container>
+          <ng-container *ngIf="collection.hasError('maxlength')">
+            too long(no more than 20 letters)!
+          </ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>

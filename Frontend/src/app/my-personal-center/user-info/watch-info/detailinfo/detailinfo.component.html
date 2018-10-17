@@ -1,0 +1,79 @@
+
+<div nz-row class="s-bk">
+  <!-- navbar -->
+
+  <div nz-col nzSpan="24">
+    <nz-tabset nz-row style="text-align: center;" >
+      <nz-tab nz-col nzSpan="5" [nzTitle]="ReportsTemplate">
+        <ng-template #ReportsTemplate>
+            <a>Reports</a>
+        </ng-template>
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
+        <div *ngIf="!pending_show&&!pending_wrong_show">
+          <div  *ngFor="let report of user?.reports">
+            <app-my-report [report]="report" [bkcolor]="'#F2F2F2'"></app-my-report>
+          </div>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="5" [nzTitle]="FollowingTemplate">
+        <ng-template #FollowingTemplate>
+          <a>Following</a>
+        </ng-template>
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
+        <div *ngIf="!pending_show&&!pending_wrong_show">
+          <div  *ngFor="let otheruser of user?.following">
+            <app-followuser [otheruser]="otheruser" [bkcolor]="'#F2F2F2'" ></app-followuser>
+          </div>
+        </div>
+      </nz-tab>
+
+      <nz-tab nz-col nzSpan="4" [nzTitle]="FollowerTemplate">
+        <ng-template #FollowerTemplate>
+          <a>Followers</a>
+        </ng-template>
+        <!-- for pending -->
+        <div *ngIf="pending_show&&!pending_wrong_show">
+          <div class="pending-position">
+            <app-pending></app-pending>
+          </div>
+        </div>
+        <div *ngIf="pending_wrong_show">
+          <div class="pending-position">
+            <app-wrong-pending></app-wrong-pending>
+          </div>
+        </div>
+        <!-- for pending  -->
+        <div *ngIf="!pending_show&&!pending_wrong_show">
+          <div  *ngFor="let otheruser of user?.followers">
+            <app-followuser [otheruser]="otheruser"  [bkcolor]="'#F2F2F2'"></app-followuser>
+          </div>
+        </div>
+      </nz-tab>
+
+
+    </nz-tabset>
+  </div>
+</div>

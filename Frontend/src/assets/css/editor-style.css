@@ -1,0 +1,144 @@
+.render_body {
+    text-align:justify;
+    background-color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 5px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 10px;
+}
+
+.render_title {
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.render_attr {
+    font-size: 1.2em;
+    color: black;
+    text-align:center;
+}
+
+.render_sub_key {
+    font-size:1.3em;
+    font-weight: 600;
+    color: black;
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+
+.render_sub_value {
+    font-size:1.1em;
+    color: black;
+    margin-top: 0;
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+
+.render_result_pic {
+    width:75%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.render_result_text {
+    font-size:1.1em;
+    color: black;
+    margin-top: 0;
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+
+.render_result_list {
+    padding-left: 50px;
+    margin-bottom: 5px;
+}
+
+.render_result_list_item {
+    padding-left: 2px; 
+}
+
+.render_result_list_text {
+    font-size:1.1em;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 3px;
+}
+
+.render_result_table {
+    width: 80%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+
+    border-bottom-color: #000000;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-top-color: #000000;
+    border-top-style: solid;
+    border-top-width: 2px;
+    margin-bottom: 5px;
+}
+
+.render_result_table_row {
+}
+
+.render_result_table_th {
+    font-size:1.1em;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 3px;
+    border-bottom-color: #000000;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.render_result_table_tr {
+    font-size:1.1em;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 3px;
+}
+
+.render_step_table {
+    width: 100%;
+}
+
+.render_step_row {
+
+}
+
+.render_step_th_p {
+    font-size:1.3em;
+    color: black;
+}
+
+.render_step_th_r {
+    font-size:1.3em;
+    color: black;
+    padding-left:50px;
+}
+
+.render_step_td_p {
+    color: black;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.render_step_td_r {
+    border-left: 1px;
+    border-left-style: solid;
+    border-left-color: grey;
+    padding-left: 5px;
+    color: rgb(255, 174, 97);
+}
+
+.render_footer {
+    margin-top: 20px;
+}
+
+.render_header {
+    padding-bottom: 10px;
+}
