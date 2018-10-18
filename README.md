@@ -1,6 +1,6 @@
-# Biohub (Team_USTC_Software)
+# BioHub (Team_USTC_Software)
 
-Welcome to Biohub.
+Welcome to BioHub.
 
 [Our Wiki](http://2018.igem.org/Team:USTC-Software/index.html)  [Our Website](https://biohub.tech/)
 
